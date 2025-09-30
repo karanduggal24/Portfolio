@@ -1,4 +1,4 @@
-import React from 'react';
+// import React from 'react';
 import './Main.css'
 import Profile from '../assets/Myimage.webp'
 import ReactLogo from '../assets/ReactLogo.png'
@@ -134,11 +134,12 @@ function Main() {
             <h1>Let's Work Together </h1>
             </div>
             <div className='Contact-container'> 
+                  <div>
                   <a href="tel:+916239868675"><img src={Phone} /></a>
-                  <a href="mailto:karanduggal6239@gmail.com"><img src={Mail}/></a>
+                  <a href="mailto:karanduggal6239@gmail.com" target='blank'><img src={Mail}/></a>
                   <a href="https://www.linkedin.com/in/karan-duggal-7b93822b4/" target='new'><img src={LinkedIn}/></a>
                   <a href='https://github.com/karanduggal24' target='new'><img src={Github}/></a>
-                  
+                  </div>
             </div>
 
             </div>  
