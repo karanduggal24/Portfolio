@@ -64,7 +64,6 @@ function Main() {
         className='text'>
             <h1>Karan Duggal</h1>
             <p>Full Stack Web Developer</p>
-            <p> Building Scalable Apps with React & Node.js</p>
         </motion.div>
       </div>
 <div className='skills'>
