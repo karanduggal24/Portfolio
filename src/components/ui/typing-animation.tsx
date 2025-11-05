@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react"
+import { useEffect, useMemo, useRef, useState, useCallback } from "react"
 import { motion, useInView } from "motion/react"
 import type { MotionProps } from "motion/react"
 import { cn } from "@/lib/utils"
@@ -45,11 +45,94 @@ export function TypingAnimation({
   const [currentWordIndex, setCurrentWordIndex] = useState(0)
   const [currentCharIndex, setCurrentCharIndex] = useState(0)
   const [phase, setPhase] = useState<"typing" | "pause" | "deleting">("typing")
+  const [hasStarted, setHasStarted] = useState(false)
   const elementRef = useRef<HTMLElement | null>(null)
+  const observerRef = useRef<IntersectionObserver | null>(null)
+  
+  // Use framer-motion's useInView as backup
   const isInView = useInView(elementRef as React.RefObject<Element>, {
-    amount: 0.3,
-    once: true,
+    amount: 0.05, // Very low threshold
+    once: false, // Allow re-triggering
+    margin: "0px 0px -20% 0px", // Extended detection zone
   })
+
+  // Custom intersection observer for more reliable detection
+  const setupCustomObserver = useCallback(() => {
+    if (!elementRef.current || hasStarted) return
+
+    observerRef.current = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !hasStarted) {
+            setHasStarted(true)
+            observerRef.current?.disconnect()
+          }
+        })
+      },
+      {
+        threshold: [0, 0.01, 0.05, 0.1], // Multiple thresholds for better detection
+        rootMargin: "50px 0px -10% 0px", // Large top margin, negative bottom margin
+      }
+    )
+
+    observerRef.current.observe(elementRef.current)
+  }, [hasStarted])
+
+  // Setup observer when element is available
+  useEffect(() => {
+    if (elementRef.current && startOnView && !hasStarted) {
+      setupCustomObserver()
+    }
+    
+    return () => {
+      observerRef.current?.disconnect()
+    }
+  }, [setupCustomObserver, startOnView, hasStarted])
+
+  // Fallback: also trigger on framer-motion's useInView
+  useEffect(() => {
+    if (isInView && startOnView && !hasStarted) {
+      setHasStarted(true)
+    }
+  }, [isInView, startOnView, hasStarted])
+
+  // Additional fallback: scroll-based detection for very fast scrolling
+  useEffect(() => {
+    if (!startOnView || hasStarted) return
+
+    const handleScroll = () => {
+      if (!elementRef.current || hasStarted) return
+
+      const rect = elementRef.current.getBoundingClientRect()
+      const windowHeight = window.innerHeight
+      
+      // Trigger if element is anywhere near the viewport (generous detection)
+      if (rect.top < windowHeight + 100 && rect.bottom > -100) {
+        setHasStarted(true)
+      }
+    }
+
+    // Throttle scroll events for performance
+    let ticking = false
+    const throttledScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          handleScroll()
+          ticking = false
+        })
+        ticking = true
+      }
+    }
+
+    window.addEventListener('scroll', throttledScroll, { passive: true })
+    
+    // Also check immediately in case element is already visible
+    handleScroll()
+
+    return () => {
+      window.removeEventListener('scroll', throttledScroll)
+    }
+  }, [startOnView, hasStarted])
 
   const wordsToAnimate = useMemo(
     () => words || (children ? [children] : []),
@@ -60,7 +143,7 @@ export function TypingAnimation({
   const typingSpeed = typeSpeed || duration
   const deletingSpeed = deleteSpeed || typingSpeed / 2
 
-  const shouldStart = startOnView ? isInView : true
+  const shouldStart = startOnView ? hasStarted : true
 
   useEffect(() => {
     if (!shouldStart || wordsToAnimate.length === 0) return

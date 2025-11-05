@@ -18,29 +18,57 @@ export const MatrixRain = ({ className = "" }: MatrixRainProps) => {
     let width = (canvas.width = window.innerWidth);
     let height = (canvas.height = window.innerHeight);
 
+    // Detect dark mode dynamically
+    const getIsDark = () => {
+      return document.documentElement.classList.contains("dark");
+    };
+
+    // Matrix rain setup
     const fontSize = 16;
     const columns = Math.floor(width / fontSize);
     const drops = Array(columns).fill(1);
 
-    // Detect dark mode dynamically
-    const getIsDark = () =>
-      document.documentElement.classList.contains("dark") ||
-      window.matchMedia("(prefers-color-scheme: dark)").matches;
+    // Floating particles setup
+    interface Particle {
+      x: number;
+      y: number;
+      vx: number;
+      vy: number;
+      radius: number;
+      opacity: number;
+    }
 
-    const draw = () => {
+    const particles: Particle[] = [];
+    const particleCount = 50;
+
+    // Initialize particles
+    for (let i = 0; i < particleCount; i++) {
+      particles.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        vx: (Math.random() - 0.5) * 0.5,
+        vy: (Math.random() - 0.5) * 0.5,
+        radius: Math.random() * 3 + 2,
+        opacity: Math.random() * 0.5 + 0.3,
+      });
+    }
+
+    // Initial background fill
+    const initBackground = () => {
       const isDark = getIsDark();
+      ctx.fillStyle = isDark ? "#000000" : "#ffffff";
+      ctx.fillRect(0, 0, width, height);
+    };
+    
+    initBackground();
 
+    const drawMatrixRain = () => {
       // Background fade for trail
-      ctx.fillStyle = isDark
-        ? "rgba(0, 0, 0, 0.15)" // dark mode
-        : "rgba(255, 255, 255, 0.25)"; // light mode
+      ctx.fillStyle = "rgba(0, 0, 0, 0.5)";
       ctx.fillRect(0, 0, width, height);
 
-      // Matrix rain color
-      ctx.fillStyle = isDark
-        ? "rgba(74, 222, 128, 0.85)" // green-400 in dark mode
-        : "rgba(59, 130, 246, 0.9)"; // blue-500 in light mode
-
+      // Matrix rain color (green)
+      ctx.fillStyle = "rgba(74, 222, 128, 0.9)";
       ctx.font = `${fontSize}px monospace`;
 
       for (let i = 0; i < drops.length; i++) {
@@ -52,9 +80,60 @@ export const MatrixRain = ({ className = "" }: MatrixRainProps) => {
       }
     };
 
+    const drawFloatingParticles = () => {
+      // Clear with white background
+      ctx.fillStyle = "rgba(255, 255, 255, 0.1)";
+      ctx.fillRect(0, 0, width, height);
+
+      // Update and draw particles
+      particles.forEach((p) => {
+        // Update position
+        p.x += p.vx;
+        p.y += p.vy;
+
+        // Bounce off edges
+        if (p.x < 0 || p.x > width) p.vx *= -1;
+        if (p.y < 0 || p.y > height) p.vy *= -1;
+
+        // Keep within bounds
+        p.x = Math.max(0, Math.min(width, p.x));
+        p.y = Math.max(0, Math.min(height, p.y));
+
+        // Draw particle
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(59, 130, 246, ${p.opacity})`; // blue-500
+        ctx.fill();
+
+        // Draw glow
+        const gradient = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.radius * 3);
+        gradient.addColorStop(0, `rgba(59, 130, 246, ${p.opacity * 0.3})`);
+        gradient.addColorStop(1, "rgba(59, 130, 246, 0)");
+        ctx.fillStyle = gradient;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius * 3, 0, Math.PI * 2);
+        ctx.fill();
+      });
+    };
+
     let animation: number;
+    let currentMode = getIsDark();
+    
     const loop = () => {
-      draw();
+      const isDark = getIsDark();
+      
+      // If mode changed, reinitialize background
+      if (isDark !== currentMode) {
+        currentMode = isDark;
+        initBackground();
+      }
+      
+      if (isDark) {
+        drawMatrixRain();
+      } else {
+        drawFloatingParticles();
+      }
+      
       animation = requestAnimationFrame(loop);
     };
     loop();
@@ -62,11 +141,26 @@ export const MatrixRain = ({ className = "" }: MatrixRainProps) => {
     const handleResize = () => {
       width = canvas.width = window.innerWidth;
       height = canvas.height = window.innerHeight;
+      
+      // Reinitialize particles for new dimensions
+      particles.length = 0;
+      for (let i = 0; i < particleCount; i++) {
+        particles.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          vx: (Math.random() - 0.5) * 0.5,
+          vy: (Math.random() - 0.5) * 0.5,
+          radius: Math.random() * 3 + 2,
+          opacity: Math.random() * 0.5 + 0.3,
+        });
+      }
+      
+      initBackground();
     };
 
     // Repaint when theme changes
     const themeObserver = new MutationObserver(() => {
-      draw();
+      initBackground();
     });
     themeObserver.observe(document.documentElement, {
       attributes: true,
@@ -150,7 +244,7 @@ export const AnimatedTitle = ({
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 1, delay }}
       className={`text-4xl sm:text-5xl md:text-6xl font-bold 
-      text-blue-500 dark:text-green-400 drop-shadow-lg transition-colors duration-700 ${className}`}
+      text-blue-500 dark:text-green-300 drop-shadow-lg transition-colors duration-700 ${className}`}
     >
       {children}
     </motion.h1>

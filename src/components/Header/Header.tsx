@@ -3,7 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 import { AnimatedThemeToggler } from "../ui/animated-theme-toggler";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
-
+// import { Pointer } from "../ui/pointer";
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -18,7 +18,7 @@ function Header() {
 
   const navLinkClasses = ({ isActive }) =>
     [
-      "transition-all duration-300 px-3 py-2 rounded-md font-medium",
+      " cursor-none transition-all duration-300 px-3 py-2 rounded-md font-medium",
       "hover:text-gray-700 dark:hover:text-gray-300 hover:scale-105",
       isActive
         ? "bg-black text-green-300 dark:bg-white dark:text-blue-500"
@@ -27,11 +27,12 @@ function Header() {
 
   return (
     <header className="w-full sticky top-0 left-0 z-50 shadow-md bg-white dark:bg-black transition-colors duration-500 select-none">
+      {/* <Pointer/> */}
       <nav className="max-w-7xl mx-auto flex items-center justify-between h-[70px] px-6 relative">
         {/* Logo */}
         <Link
           to="/"
-          className=" text-blue-500 dark:text-green-300  text-2xl font-bold tracking-wide hover:text-gray-300 transition-colors"
+          className=" cursor-none text-blue-500 dark:text-green-300  text-2xl font-bold tracking-wide hover:text-gray-300 transition-colors"
         >
           Karan Duggal
         </Link>
@@ -49,7 +50,7 @@ function Header() {
             </NavLink>
           </li>
           <li className="flex items-center">
-            <AnimatedThemeToggler />
+            <AnimatedThemeToggler className="cursor-none" />
           </li>
         </ul>
 
