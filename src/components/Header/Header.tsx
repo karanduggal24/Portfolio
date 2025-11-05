@@ -26,7 +26,7 @@ function Header() {
     ].join(" ");
 
   return (
-    <header className="w-full sticky top-0 left-0 z-50 shadow-md bg-white dark:bg-black transition-colors duration-500">
+    <header className="w-full sticky top-0 left-0 z-50 shadow-md bg-white dark:bg-black transition-colors duration-500 select-none">
       <nav className="max-w-7xl mx-auto flex items-center justify-between h-[70px] px-6 relative">
         {/* Logo */}
         <Link

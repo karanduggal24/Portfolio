@@ -1,73 +1,48 @@
-# React + TypeScript + Vite
+# Home Section Components
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Available Animation Components
 
-Currently, two official plugins are available:
+### `<MatrixRain />`
+- **Purpose**: Animated matrix-style falling characters background
+- **Props**: `className?: string`
+- **Usage**: `<MatrixRain className="custom-styles" />`
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### `<BackgroundOverlay />`
+- **Purpose**: Gradient overlay for better text readability
+- **Props**: `className?: string`
+- **Usage**: `<BackgroundOverlay />`
 
-## React Compiler
+### `<ProfileImage />`
+- **Purpose**: Animated profile image with glow effects
+- **Props**: 
+  - `src: string` (required)
+  - `className?: string`
+  - `size?: "sm" | "md" | "lg"`
+- **Usage**: `<ProfileImage src={image} size="md" className="mb-6" />`
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### `<AnimatedTitle />`
+- **Purpose**: Fade-in animated title text
+- **Props**:
+  - `children: React.ReactNode` (required)
+  - `className?: string`
+  - `delay?: number`
+- **Usage**: `<AnimatedTitle delay={0.5}>Your Title</AnimatedTitle>`
 
-## Expanding the ESLint configuration
+## Keywords for Quick Access
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **Matrix**: Use `MatrixRain` component
+- **Background**: Use `BackgroundOverlay` component  
+- **Profile**: Use `ProfileImage` component
+- **Title**: Use `AnimatedTitle` component
+- **Glow**: Built into `ProfileImage` component
+- **Fade**: Built into `AnimatedTitle` component
+- **Responsive**: All components are responsive by default
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## File Structure
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
 ```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+src/components/Home/
+├── Home.tsx          # Main component (clean, keyword-based)
+├── Animation.tsx     # All animation logic and components
+└── README.md         # This reference file
 ```
