@@ -166,9 +166,11 @@
     @apply bg-background text-foreground;
   }
   
-  /* Ensure custom cursor works properly */
-  .cursor-none * {
-    cursor: none !important;
+  /* Ensure custom cursor works properly - only on medium screens and above */
+  @media (min-width: 768px) {
+    .cursor-none * {
+      cursor: none !important;
+    }
   }
 }
 

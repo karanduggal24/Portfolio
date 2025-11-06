@@ -38,8 +38,12 @@ export function Pointer({
       const touchDevice = checkTouchDevice();
       setIsTouchDevice(touchDevice);
 
-      // Only set up pointer functionality on non-touch devices
-      if (!touchDevice) {
+      const shouldShowCustomCursor = () => {
+        return !touchDevice && window.innerWidth >= 768;
+      };
+
+      // Only set up pointer functionality on non-touch devices and medium screens+
+      if (shouldShowCustomCursor()) {
         // Apply cursor: none to the entire document body
         document.body.style.cursor = "none";
 
@@ -51,9 +55,19 @@ export function Pointer({
 
         const handleMouseLeave = () => setIsActive(false);
 
+        const handleResize = () => {
+          if (!shouldShowCustomCursor()) {
+            document.body.style.cursor = "";
+            setIsActive(false);
+          } else if (!document.body.style.cursor) {
+            document.body.style.cursor = "none";
+          }
+        };
+
         // Add event listeners to the document for global coverage
         document.addEventListener("mousemove", handleMouseMove);
         document.addEventListener("mouseleave", handleMouseLeave);
+        window.addEventListener("resize", handleResize);
 
         // Set initial active state
         setIsActive(true);
@@ -62,13 +76,14 @@ export function Pointer({
           document.body.style.cursor = "";
           document.removeEventListener("mousemove", handleMouseMove);
           document.removeEventListener("mouseleave", handleMouseLeave);
+          window.removeEventListener("resize", handleResize);
         };
       }
     }
   }, [x, y]);
 
-  // Don't render anything on touch devices
-  if (isTouchDevice) {
+  // Don't render anything on touch devices or small screens
+  if (isTouchDevice || (typeof window !== "undefined" && window.innerWidth < 768)) {
     return null;
   }
 
@@ -78,7 +93,7 @@ export function Pointer({
       <AnimatePresence>
         {isActive && (
           <motion.div
-            className="pointer-events-none fixed z-1000 transform-[translate(-50%,-50%)] hidden md:block"
+            className="pointer-events-none fixed z-100000 transform-[translate(-50%,-50%)] hidden md:block"
             style={{
               top: y,
               left: x,
