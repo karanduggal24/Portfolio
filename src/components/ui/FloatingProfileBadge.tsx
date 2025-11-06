@@ -1,4 +1,5 @@
 import { motion } from "motion/react";
+import profileimg from "/src/assets/MyImage.jpg"
 
 export const FloatingProfileBadge = () => (
   <motion.div
@@ -13,7 +14,7 @@ export const FloatingProfileBadge = () => (
       border border-secondary/40 dark:border-secondary/30 transition-all duration-700"
     >
       <div
-        style={{ backgroundImage: `url('/src/assets/MyImage.jpg')` }}
+        style={{ backgroundImage: `url(${profileimg})` }}
         className="w-7 h-7 sm:w-10 sm:h-10 bg-cover bg-center rounded-full 
         border border-secondary dark:border-secondary shadow-md"
       />
