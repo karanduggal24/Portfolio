@@ -10,7 +10,7 @@ const iconMap = {
 
 function About() {
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center gap-10 w-full overflow-hidden px-4 sm:px-8 md:px-12 lg:px-24 py-16 relative">
+    <section className="min-h-screen flex flex-col items-center justify-center gap-6 sm:gap-10 w-full overflow-hidden px-4 sm:px-8 md:px-12 lg:px-24 py-8 sm:py-16 relative">
       {/* Background gradient effect */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-secondary/5 to-transparent pointer-events-none" />
 
@@ -29,7 +29,7 @@ function About() {
       </motion.div>
 
       {/* Cards Section */}
-      <div className="flex flex-col gap-6 w-full max-w-3xl relative z-10">
+      <div className="flex flex-col gap-4 sm:gap-6 w-full max-w-3xl relative z-10">
         {aboutData.map((item,index:number) => {
           const Icon = iconMap[item.icon];
           return (

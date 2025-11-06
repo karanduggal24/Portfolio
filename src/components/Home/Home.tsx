@@ -26,7 +26,7 @@ function Home() {
   return (
     <div>
       {/* Hero Section */}
-      <div className="relative w-full min-h-[93vh] md:min-h-[90.3vh] flex flex-col md:flex-row items-center justify-center px-6 md:px-16 text-center md:text-left overflow-hidden bg-primary dark:bg-primary transition-colors duration-700">
+      <div className="relative w-full min-h-[88vh] sm:min-h-[93vh] md:min-h-[90.3vh] flex flex-col md:flex-row items-center justify-center px-6 md:px-16 text-center md:text-left overflow-hidden bg-primary dark:bg-primary transition-colors duration-700">
         <MatrixRain />
         <BackgroundOverlay />
 

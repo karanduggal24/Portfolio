@@ -3,9 +3,9 @@ import { Marquee } from "@/components/ui/marquee";
 
 function Skills() {
   return (
-    <div className="min-h-[50vh] flex flex-col justify-center items-center w-full overflow-hidden">
+    <div className="min-h-[40vh] sm:min-h-[50vh] flex flex-col justify-center items-center w-full overflow-hidden">
       {/* Section Title */}
-      <h1 className="text-3xl sm:text-4xl md:text-5xl text-secondary dark:secondary font-bold font-sans py-10">
+      <h1 className="text-3xl sm:text-4xl md:text-5xl text-secondary dark:secondary font-bold font-sans py-6 sm:py-10">
         Skills
       </h1>
 
