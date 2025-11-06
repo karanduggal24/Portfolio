@@ -20,35 +20,57 @@ export function Pointer({
   const x = useMotionValue(0);
   const y = useMotionValue(0);
   const [isActive, setIsActive] = useState<boolean>(false);
+  const [isTouchDevice, setIsTouchDevice] = useState<boolean>(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      // Apply cursor: none to the entire document body
-      document.body.style.cursor = "none";
+      // Detect touch devices using multiple methods
+      const checkTouchDevice = () => {
+        return (
+          'ontouchstart' in window ||
+          navigator.maxTouchPoints > 0 ||
+          window.matchMedia('(pointer: coarse)').matches ||
+          /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+        );
+      };
 
-      const handleMouseMove = (e: MouseEvent) => {
-        x.set(e.clientX);
-        y.set(e.clientY);
+      const touchDevice = checkTouchDevice();
+      setIsTouchDevice(touchDevice);
+
+      // Only set up pointer functionality on non-touch devices
+      if (!touchDevice) {
+        // Apply cursor: none to the entire document body
+        document.body.style.cursor = "none";
+
+        const handleMouseMove = (e: MouseEvent) => {
+          x.set(e.clientX);
+          y.set(e.clientY);
+          setIsActive(true);
+        };
+
+        const handleMouseLeave = () => setIsActive(false);
+
+        // Add event listeners to the document for global coverage
+        document.addEventListener("mousemove", handleMouseMove);
+        document.addEventListener("mouseleave", handleMouseLeave);
+
+        // Set initial active state
         setIsActive(true);
-      };
 
-      const handleMouseLeave = () => setIsActive(false);
-
-      // Add event listeners to the document for global coverage
-      document.addEventListener("mousemove", handleMouseMove);
-      document.addEventListener("mouseleave", handleMouseLeave);
-
-      // Set initial active state
-      setIsActive(true);
-
-      return () => {
-        document.body.style.cursor = "";
-        document.removeEventListener("mousemove", handleMouseMove);
-        document.removeEventListener("mouseleave", handleMouseLeave);
-      };
+        return () => {
+          document.body.style.cursor = "";
+          document.removeEventListener("mousemove", handleMouseMove);
+          document.removeEventListener("mouseleave", handleMouseLeave);
+        };
+      }
     }
   }, [x, y]);
+
+  // Don't render anything on touch devices
+  if (isTouchDevice) {
+    return null;
+  }
 
   return (
     <>
@@ -56,7 +78,7 @@ export function Pointer({
       <AnimatePresence>
         {isActive && (
           <motion.div
-            className="pointer-events-none fixed z-[1000] transform-[translate(-50%,-50%)]"
+            className="pointer-events-none fixed z-1000 transform-[translate(-50%,-50%)] hidden md:block"
             style={{
               top: y,
               left: x,

@@ -18,11 +18,45 @@ export const AnimatedThemeToggler = ({
   const buttonRef = useRef<HTMLButtonElement>(null)
 
   useEffect(() => {
+    const initializeTheme = () => {
+      const savedTheme = localStorage.getItem("theme")
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches
+      
+      // Use saved theme if available, otherwise use device preference
+      const shouldBeDark = savedTheme ? savedTheme === "dark" : prefersDark
+      
+      if (shouldBeDark) {
+        document.documentElement.classList.add("dark")
+      } else {
+        document.documentElement.classList.remove("dark")
+      }
+      
+      setIsDark(shouldBeDark)
+    }
+
     const updateTheme = () => {
       setIsDark(document.documentElement.classList.contains("dark"))
     }
 
-    updateTheme()
+    // Initialize theme on first load
+    initializeTheme()
+
+    // Listen for system theme changes
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)")
+    const handleSystemThemeChange = (e: MediaQueryListEvent) => {
+      // Only auto-update if user hasn't manually set a preference
+      if (!localStorage.getItem("theme")) {
+        const shouldBeDark = e.matches
+        if (shouldBeDark) {
+          document.documentElement.classList.add("dark")
+        } else {
+          document.documentElement.classList.remove("dark")
+        }
+        setIsDark(shouldBeDark)
+      }
+    }
+
+    mediaQuery.addEventListener("change", handleSystemThemeChange)
 
     const observer = new MutationObserver(updateTheme)
     observer.observe(document.documentElement, {
@@ -30,7 +64,10 @@ export const AnimatedThemeToggler = ({
       attributeFilter: ["class"],
     })
 
-    return () => observer.disconnect()
+    return () => {
+      observer.disconnect()
+      mediaQuery.removeEventListener("change", handleSystemThemeChange)
+    }
   }, [])
 
   const toggleTheme = useCallback(async () => {
@@ -41,6 +78,7 @@ export const AnimatedThemeToggler = ({
         const newTheme = !isDark
         setIsDark(newTheme)
         document.documentElement.classList.toggle("dark")
+        // Save user preference to override system default
         localStorage.setItem("theme", newTheme ? "dark" : "light")
       })
     }).ready
@@ -68,6 +106,20 @@ export const AnimatedThemeToggler = ({
       }
     )
   }, [isDark, duration])
+
+  // Optional: Function to reset to system preference
+  const resetToSystemTheme = useCallback(() => {
+    localStorage.removeItem("theme")
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches
+    
+    if (prefersDark) {
+      document.documentElement.classList.add("dark")
+    } else {
+      document.documentElement.classList.remove("dark")
+    }
+    
+    setIsDark(prefersDark)
+  }, [])
 
   return (
     <button
