@@ -23,35 +23,30 @@ export function Pointer({
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (typeof window !== "undefined" && containerRef.current) {
-      const parentElement = containerRef.current.parentElement;
-      if (parentElement) {
-        parentElement.style.cursor = "none";
+    if (typeof window !== "undefined") {
+      // Apply cursor: none to the entire document body
+      document.body.style.cursor = "none";
 
-        const handleMouseMove = (e: MouseEvent) => {
-          x.set(e.clientX);
-          y.set(e.clientY);
-        };
+      const handleMouseMove = (e: MouseEvent) => {
+        x.set(e.clientX);
+        y.set(e.clientY);
+        setIsActive(true);
+      };
 
-        const handleMouseEnter = (e: MouseEvent) => {
-          x.set(e.clientX);
-          y.set(e.clientY);
-          setIsActive(true);
-        };
+      const handleMouseLeave = () => setIsActive(false);
 
-        const handleMouseLeave = () => setIsActive(false);
+      // Add event listeners to the document for global coverage
+      document.addEventListener("mousemove", handleMouseMove);
+      document.addEventListener("mouseleave", handleMouseLeave);
 
-        parentElement.addEventListener("mousemove", handleMouseMove);
-        parentElement.addEventListener("mouseenter", handleMouseEnter);
-        parentElement.addEventListener("mouseleave", handleMouseLeave);
+      // Set initial active state
+      setIsActive(true);
 
-        return () => {
-          parentElement.style.cursor = "";
-          parentElement.removeEventListener("mousemove", handleMouseMove);
-          parentElement.removeEventListener("mouseenter", handleMouseEnter);
-          parentElement.removeEventListener("mouseleave", handleMouseLeave);
-        };
-      }
+      return () => {
+        document.body.style.cursor = "";
+        document.removeEventListener("mousemove", handleMouseMove);
+        document.removeEventListener("mouseleave", handleMouseLeave);
+      };
     }
   }, [x, y]);
 
@@ -61,7 +56,7 @@ export function Pointer({
       <AnimatePresence>
         {isActive && (
           <motion.div
-            className="pointer-events-none fixed z-[100] transform-[translate(-50%,-50%)]"
+            className="pointer-events-none fixed z-50 transform-[translate(-50%,-50%)]"
             style={{
               top: y,
               left: x,
