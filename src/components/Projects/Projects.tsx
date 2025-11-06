@@ -4,6 +4,7 @@ import { projects } from "@/static data/static";
 import { Safari } from "../ui/safari";
 import { FaGithub } from "react-icons/fa";
 import { FloatingProfileBadge } from "../ui/FloatingProfileBadge";
+import ScrollToTop from "../ui/ScrollToTop";
 
 function Projects() {
 useEffect(()=>{
@@ -50,6 +51,7 @@ useEffect(()=>{
       animate="visible"
       variants={containerVariants}
     >
+      <ScrollToTop />
      <FloatingProfileBadge />
       {/* Header Section */}
       <motion.div 

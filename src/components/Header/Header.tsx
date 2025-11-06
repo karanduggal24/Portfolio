@@ -19,7 +19,7 @@ function Header() {
   const navLinkClasses = ({ isActive }: { isActive: boolean }) =>
     [
       " cursor-none transition-all duration-300 px-3 py-2 rounded-md font-medium",
-      "hover:text-gray-700 dark:hover:text-gray-300 hover:scale-105",
+      "hover:text-black dark:hover:text-white hover:scale-105",
       isActive
         ? "bg-secondary text-primary dark:bg-secondary dark:text-primary"
         : "text-secondary dark:text-secondary",
@@ -32,7 +32,7 @@ function Header() {
         {/* Logo */}
         <Link
           to="/"
-          className=" cursor-none text-secondary dark:text-secondary text-2xl font-bold tracking-wide hover:text-gray-300 transition-colors"
+          className=" cursor-none text-secondary dark:text-secondary text-2xl font-bold tracking-wide hover:text-black dark:hover:text-white transition-colors"
         >
           Karan Duggal
         </Link>
