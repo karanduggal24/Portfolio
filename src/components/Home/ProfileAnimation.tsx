@@ -46,24 +46,24 @@ export const MovingProfileImage = ({
         initial={{ opacity: 0, scale: 0.9, x: -20 }}
         animate={{ opacity: 1, scale: 1, x: 0 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
-        className="fixed top-20 left-6 z-[9999]"
+        className="fixed top-16 left-3 sm:top-20 sm:left-6 z-[9999]"
       >
         <div
-          className="flex items-center gap-3 px-3 py-2 rounded-full 
+          className="flex items-center gap-2 sm:gap-3 px-2 py-1.5 sm:px-3 sm:py-2 rounded-full 
           bg-primary/80 dark:bg-primary/80 backdrop-blur-md shadow-md 
           border border-secondary/40 dark:border-secondary/30 transition-all duration-700"
         >
           <div
             style={{ backgroundImage: `url(${src})` }}
-            className="w-10 h-10 bg-cover bg-center rounded-full 
+            className="w-7 h-7 sm:w-10 sm:h-10 bg-cover bg-center rounded-full 
             border border-secondary dark:border-secondary 
             shadow-md transition-all duration-700"
           />
           <div className="flex flex-col">
-            <h2 className="text-base font-semibold text-secondary dark:text-secondary whitespace-nowrap">
+            <h2 className="text-xs sm:text-base font-semibold text-secondary dark:text-secondary whitespace-nowrap">
               Karan Duggal
             </h2>
-            <span className="text-xs text-secondary/80 dark:text-secondary/80">
+            <span className="text-[10px] sm:text-xs text-secondary/80 dark:text-secondary/80">
               Front-End Developer
             </span>
           </div>
@@ -82,7 +82,7 @@ export const MovingProfileImage = ({
     >
       <div
         style={{ backgroundImage: `url(${src})` }}
-        className="w-40 h-40 md:w-64 md:h-64 bg-cover bg-center rounded-full 
+        className="w-32 h-32 sm:w-40 sm:h-40 md:w-64 md:h-64 bg-cover bg-center rounded-full 
         border-2 border-secondary dark:border-secondary 
         shadow-[0_0_25px_5px_rgba(59,130,246,0.4)] dark:shadow-[0_0_25px_5px_rgba(74,222,128,0.5)]
         hover:shadow-[0_0_35px_10px_rgba(59,130,246,0.6)] dark:hover:shadow-[0_0_35px_10px_rgba(74,222,128,0.7)]
@@ -116,7 +116,7 @@ export const MovingTitle = ({
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 1 }}
-      className={`text-4xl sm:text-5xl md:text-6xl font-bold 
+      className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold 
       text-secondary dark:text-secondary drop-shadow-lg transition-colors duration-700 ${className}`}
     >
       {children}
@@ -150,17 +150,17 @@ export const StickyHeader = ({
           backdrop-blur-md border-b border-gray-200 dark:border-gray-800 
           transition-colors duration-700 shadow-md"
         >
-          <div className="flex items-center px-6 py-3">
+          <div className="flex items-center px-3 py-2 sm:px-6 sm:py-3">
             <div
               style={{ backgroundImage: `url(${src})` }}
-              className="w-10 h-10 bg-cover bg-center rounded-full 
-              border border-secondary dark:border-secondary mr-3"
+              className="w-8 h-8 sm:w-10 sm:h-10 bg-cover bg-center rounded-full 
+              border border-secondary dark:border-secondary mr-2 sm:mr-3"
             />
             <div className="flex flex-col">
-              <h2 className="text-lg font-semibold text-secondary dark:text-secondary transition-colors duration-700">
+              <h2 className="text-sm sm:text-lg font-semibold text-secondary dark:text-secondary transition-colors duration-700">
                 {name}
               </h2>
-              <span className="text-sm text-secondary/80 dark:text-secondary/80 transition-colors duration-700">
+              <span className="text-xs sm:text-sm text-secondary/80 dark:text-secondary/80 transition-colors duration-700">
                 ({title})
               </span>
             </div>

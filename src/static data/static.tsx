@@ -17,9 +17,11 @@ import { RiTailwindCssFill } from "react-icons/ri";
   icon: "GraduationCap" | "Briefcase";
   gradient: string; // for bg gradient direction
 }
+import { type IconBaseProps } from "react-icons";
+
 interface Skill {
   name: string;
-  img?: React.ComponentType;
+  img?: React.ComponentType<IconBaseProps>;
   id: number;
 }
 

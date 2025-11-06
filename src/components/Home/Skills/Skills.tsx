@@ -19,10 +19,11 @@ function Skills() {
               className="flex flex-col items-center justify-center mx-6 sm:mx-10 text-secondary dark:text-secondary transition-transform hover:scale-105"
             >
               {/* Responsive Icon Size */}
-              <IconComp
-                className="drop-shadow-md"
-                size="4em" // default for accessibility
-              />
+              {IconComp && (
+                <IconComp
+                  className="drop-shadow-md text-6xl"
+                />
+              )}
               <h1 className="text-xs sm:text-sm md:text-base mt-2 font-medium text-center">
                 {skill.name}
               </h1>
