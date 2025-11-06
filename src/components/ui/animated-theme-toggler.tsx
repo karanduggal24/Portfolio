@@ -107,19 +107,7 @@ export const AnimatedThemeToggler = ({
     )
   }, [isDark, duration])
 
-  // Optional: Function to reset to system preference
-  const resetToSystemTheme = useCallback(() => {
-    localStorage.removeItem("theme")
-    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches
-    
-    if (prefersDark) {
-      document.documentElement.classList.add("dark")
-    } else {
-      document.documentElement.classList.remove("dark")
-    }
-    
-    setIsDark(prefersDark)
-  }, [])
+
 
   return (
     <button
