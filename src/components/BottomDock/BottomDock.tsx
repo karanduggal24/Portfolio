@@ -3,6 +3,7 @@ import { FaGithub } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
 import { FaFileDownload } from "react-icons/fa";
 import { Pointer } from "../ui/pointer";
+import { MdEmail } from "react-icons/md";
 function BottomDock() {
   return (
     <div>
@@ -18,7 +19,7 @@ function BottomDock() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <DockIcon className="  hover:scale-110 transition-transform duration-200 cursor-none text-blue-500 dark:text-green-400">
+            <DockIcon className="  hover:scale-110 transition-transform duration-200 cursor-none text-secondary dark:text-secondary">
               <FaGithub size="1.5em" />
             </DockIcon>
           </a>
@@ -29,15 +30,20 @@ function BottomDock() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <DockIcon className="hover:scale-110 transition-transform duration-200 cursor-none text-blue-500 dark:text-green-400">
+            <DockIcon className="hover:scale-110 transition-transform duration-200 cursor-none text-secondary dark:text-secondary">
               <FaLinkedin size="1.5em" />
             </DockIcon>
           </a>
 
           {/* Search (Internal route) */}
           <a href="/src/assets/ResumeATSFriendly.pdf" download>
-            <DockIcon className="hover:scale-110 transition-transform duration-200 cursor-none text-blue-500 dark:text-green-400">
+            <DockIcon className="hover:scale-110 transition-transform duration-200 cursor-none text-secondary dark:text-secondary">
               <FaFileDownload size="1.5em" />
+            </DockIcon>
+          </a>
+          <a href="mailto:karanduggal6239@gmail.com">
+            <DockIcon className="hover:scale-110 transition-transform duration-200 cursor-none text-secondary dark:text-secondary">
+              <MdEmail size="1.5em" />
             </DockIcon>
           </a>
         </Dock>

@@ -16,23 +16,23 @@ function Header() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const navLinkClasses = ({ isActive }) =>
+  const navLinkClasses = ({ isActive }: { isActive: boolean }) =>
     [
       " cursor-none transition-all duration-300 px-3 py-2 rounded-md font-medium",
       "hover:text-gray-700 dark:hover:text-gray-300 hover:scale-105",
       isActive
-        ? "bg-black text-green-300 dark:bg-white dark:text-blue-500"
-        : "text-blue-500 dark:text-green-300",
+        ? "bg-secondary text-primary dark:bg-secondary dark:text-primary"
+        : "text-secondary dark:text-secondary",
     ].join(" ");
 
   return (
-    <header className="w-full sticky top-0 left-0 z-50 shadow-md bg-white dark:bg-black transition-colors duration-500 select-none">
+    <header className="w-full sticky top-0 left-0 z-50 shadow-md bg-primary dark:bg-primary transition-colors duration-500 select-none">
       {/* <Pointer/> */}
       <nav className="max-w-7xl mx-auto flex items-center justify-between h-[70px] px-6 relative">
         {/* Logo */}
         <Link
           to="/"
-          className=" cursor-none text-blue-500 dark:text-green-300  text-2xl font-bold tracking-wide hover:text-gray-300 transition-colors"
+          className=" cursor-none text-secondary dark:text-secondary text-2xl font-bold tracking-wide hover:text-gray-300 transition-colors"
         >
           Karan Duggal
         </Link>
@@ -75,7 +75,7 @@ function Header() {
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.4, ease: "easeInOut" }}
-            className="overflow-hidden md:hidden bg-white dark:bg-black border-t border-gray-200 dark:border-gray-800 shadow-inner"
+            className="overflow-hidden md:hidden bg-primary dark:bg-primary border-t border-gray-200 dark:border-gray-800 shadow-inner"
           >
             <ul className="flex flex-col items-center space-y-4 py-4">
               <li>

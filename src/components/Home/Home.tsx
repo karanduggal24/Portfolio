@@ -10,6 +10,7 @@ import {
   useScrollPosition,
 } from "./ProfileAnimation";
 import Skills from "./Skills/Skills";
+import About from "./About/About";
 // import { Pointer } from "../ui/pointer";
 
 function Home() {
@@ -18,7 +19,7 @@ function Home() {
   return (
     <div>
       {/* Hero Section */}
-      <div className="relative w-full min-h-[93vh] md:min-h-[90.3vh] flex flex-col md:flex-row items-center justify-center px-6 md:px-16 text-center md:text-left overflow-hidden bg-white dark:bg-black transition-colors duration-700">
+      <div className="relative w-full min-h-[93vh] md:min-h-[90.3vh] flex flex-col md:flex-row items-center justify-center px-6 md:px-16 text-center md:text-left overflow-hidden bg-primary dark:bg-primary transition-colors duration-700">
         <MatrixRain />
         <BackgroundOverlay />
 
@@ -28,13 +29,13 @@ function Home() {
           className="mb-6 md:mb-0 md:mr-12" 
         />
 
-        <div className="relative z-10 text-green-300 flex flex-col justify-center items-center md:items-start">
+        <div className="relative z-10 text-Secondary flex flex-col justify-center items-center md:items-start">
           <MovingTitle scrollProgress={scrollProgress}>
             Karan Duggal
           </MovingTitle>
 
           {scrollProgress < 0.3 && (
-            <p className="text-md sm:text-lg md:text-2xl mt-[6px] text-blue-500 dark:text-green-300 leading-relaxed transition-colors duration-700">
+            <p className="text-md sm:text-lg md:text-2xl mt-[6px] text-secondary dark:text-secondary leading-relaxed transition-colors duration-700">
               <TypingAnimation>Front-End Developer</TypingAnimation>
               <br />
               <TypingAnimation>Indian</TypingAnimation>
@@ -47,6 +48,7 @@ function Home() {
       
       {/* Content that will be scrolled */}
       <Skills />
+      <About />
     </div>
   );
 }

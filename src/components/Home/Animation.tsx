@@ -102,7 +102,7 @@ export const MatrixRain = ({ className = "" }: MatrixRainProps) => {
         // Draw particle
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(59, 130, 246, ${p.opacity})`; // blue-500
+        ctx.fillStyle = `rgba(59, 130, 246, ${p.opacity})`; // secondary color for light mode
         ctx.fill();
 
         // Draw glow
@@ -219,7 +219,7 @@ export const ProfileImage = ({
     <div
       style={{ backgroundImage: `url(${src})` }}
       className={`relative z-10 ${sizeClasses[size]} bg-cover bg-center rounded-full 
-      border-2 border-blue-500 dark:border-green-400 
+      border-2 border-secondary dark:border-secondary 
       shadow-[0_0_25px_5px_rgba(59,130,246,0.4)] dark:shadow-[0_0_25px_5px_rgba(74,222,128,0.5)]
       hover:shadow-[0_0_35px_10px_rgba(59,130,246,0.6)] dark:hover:shadow-[0_0_35px_10px_rgba(74,222,128,0.7)]
       transition-shadow duration-700 ${className}`}
@@ -244,7 +244,7 @@ export const AnimatedTitle = ({
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 1, delay }}
       className={`text-4xl sm:text-5xl md:text-6xl font-bold 
-      text-blue-500 dark:text-green-300 drop-shadow-lg transition-colors duration-700 ${className}`}
+      text-secondary dark:text-secondary drop-shadow-lg transition-colors duration-700 ${className}`}
     >
       {children}
     </motion.h1>

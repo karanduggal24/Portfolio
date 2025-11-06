@@ -5,7 +5,7 @@ function Skills() {
   return (
     <div className="min-h-[50vh] flex flex-col justify-center items-center w-full overflow-hidden">
       {/* Section Title */}
-      <h1 className="text-3xl sm:text-4xl md:text-5xl text-blue-500 dark:text-green-300 font-bold font-sans py-10">
+      <h1 className="text-3xl sm:text-4xl md:text-5xl text-secondary dark:secondary font-bold font-sans py-10">
         Skills
       </h1>
 
@@ -16,7 +16,7 @@ function Skills() {
           return (
             <div
               key={skill.id}
-              className="flex flex-col items-center justify-center mx-6 sm:mx-10 text-blue-500 dark:text-green-300 transition-transform hover:scale-105"
+              className="flex flex-col items-center justify-center mx-6 sm:mx-10 text-secondary dark:text-secondary transition-transform hover:scale-105"
             >
               {/* Responsive Icon Size */}
               <IconComp
