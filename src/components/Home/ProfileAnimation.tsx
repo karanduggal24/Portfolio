@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 
-// Hook for scroll detection with smooth progress
+// 🌀 Hook for scroll detection with smooth progress
 export const useScrollPosition = () => {
   const [scrollY, setScrollY] = useState(0);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -10,9 +10,9 @@ export const useScrollPosition = () => {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-      const maxScroll = 400; // Distance to complete the transition
+      const maxScroll = 800; // ⬆️ Increased distance for smoother transition
       const progress = Math.min(currentScrollY / maxScroll, 1);
-      
+
       setScrollY(currentScrollY);
       setScrollProgress(progress);
       setIsScrolled(currentScrollY > 100);
@@ -25,35 +25,53 @@ export const useScrollPosition = () => {
   return { scrollY, isScrolled, scrollProgress };
 };
 
-// Moving Profile Image Component
+// 🖼️ Moving Profile Image Component
 interface MovingProfileImageProps {
   src: string;
   scrollProgress: number;
   className?: string;
 }
 
-export const MovingProfileImage = ({ src, scrollProgress, className = "" }: MovingProfileImageProps) => {
-  const isFixed = scrollProgress > 0.4;
-  
+export const MovingProfileImage = ({
+  src,
+  scrollProgress,
+  className = "",
+}: MovingProfileImageProps) => {
+  const isFixed = scrollProgress > 0.5; // ⬆️ Delayed fixation for smoother feel
+
   if (isFixed) {
-    // Fixed position in top-left
+    // Fixed position in top-left with background chip
     return (
       <motion.div
-        initial={{ opacity: 0, scale: 1 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.5 }}
-        className="fixed top-20 left-6 z-9999"
+        initial={{ opacity: 0, scale: 0.9, x: -20 }}
+        animate={{ opacity: 1, scale: 1, x: 0 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+        className="fixed top-20 left-6 z-[9999]"
       >
         <div
-          style={{ backgroundImage: `url(${src})` }}
-          className="w-12 h-12 bg-cover bg-center rounded-full 
-          border border-secondary dark:border-secondary 
-          shadow-lg transition-colors duration-700"
-        />
+          className="flex items-center gap-3 px-3 py-2 rounded-full 
+          bg-primary/80 dark:bg-primary/80 backdrop-blur-md shadow-md 
+          border border-secondary/40 dark:border-secondary/30 transition-all duration-700"
+        >
+          <div
+            style={{ backgroundImage: `url(${src})` }}
+            className="w-10 h-10 bg-cover bg-center rounded-full 
+            border border-secondary dark:border-secondary 
+            shadow-md transition-all duration-700"
+          />
+          <div className="flex flex-col">
+            <h2 className="text-base font-semibold text-secondary dark:text-secondary whitespace-nowrap">
+              Karan Duggal
+            </h2>
+            <span className="text-xs text-secondary/80 dark:text-secondary/80">
+              Front-End Developer
+            </span>
+          </div>
+        </div>
       </motion.div>
     );
   }
-  
+
   // Normal hero position
   return (
     <motion.div
@@ -74,35 +92,24 @@ export const MovingProfileImage = ({ src, scrollProgress, className = "" }: Movi
   );
 };
 
-// Moving Title Component
+// 🧑‍💻 Moving Title Component (used only before fixing)
 interface MovingTitleProps {
   children: React.ReactNode;
   scrollProgress: number;
   className?: string;
 }
 
-export const MovingTitle = ({ children, scrollProgress, className = "" }: MovingTitleProps) => {
-  const isFixed = scrollProgress > 0.6;
-  
+export const MovingTitle = ({
+  children,
+  scrollProgress,
+  className = "",
+}: MovingTitleProps) => {
+  const isFixed = scrollProgress > 0.75; // ⬆️ Appears later (for gradual effect)
+
   if (isFixed) {
-    // Fixed position in top-left next to image
-    return (
-      <motion.div
-        initial={{ opacity: 0, x: -50 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.5 }}
-        className="fixed top-20 left-20 z-9999"
-      >
-        <h2 className="text-lg font-semibold text-secondary dark:text-secondary transition-colors duration-700 whitespace-nowrap">
-          {children}
-        </h2>
-        <span className="text-sm text-secondary dark:text-secondary transition-colors duration-700">
-          (Front-End Developer)
-        </span>
-      </motion.div>
-    );
+    return null; // Hide separate title once chip appears
   }
-  
+
   // Normal hero position
   return (
     <motion.h1
@@ -117,7 +124,7 @@ export const MovingTitle = ({ children, scrollProgress, className = "" }: Moving
   );
 };
 
-// Sticky Header Component (alternative approach)
+// 📌 Sticky Header Component (optional global variant)
 interface StickyHeaderProps {
   src: string;
   name: string;
@@ -125,7 +132,12 @@ interface StickyHeaderProps {
   isVisible: boolean;
 }
 
-export const StickyHeader = ({ src, name, title, isVisible }: StickyHeaderProps) => {
+export const StickyHeader = ({
+  src,
+  name,
+  title,
+  isVisible,
+}: StickyHeaderProps) => {
   return (
     <AnimatePresence>
       {isVisible && (
@@ -133,20 +145,22 @@ export const StickyHeader = ({ src, name, title, isVisible }: StickyHeaderProps)
           initial={{ opacity: 0, y: -100 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -100 }}
-          transition={{ duration: 0.3, ease: "easeOut" }}
-          className="fixed top-0 left-0 z-50 bg-primary dark:bg-primary backdrop-blur-md border-b border-gray-200 dark:border-gray-800 transition-colors duration-700"
-          style={{ top: "60px" }} // Adjust based on your navbar height
+          transition={{ duration: 0.4, ease: "easeOut" }}
+          className="fixed top-[60px] left-0 z-50 w-full bg-primary/80 dark:bg-primary/80 
+          backdrop-blur-md border-b border-gray-200 dark:border-gray-800 
+          transition-colors duration-700 shadow-md"
         >
           <div className="flex items-center px-6 py-3">
             <div
               style={{ backgroundImage: `url(${src})` }}
-              className="bg-primary dark:bg-primary w-10 h-10 bg-cover bg-center rounded-full border border-secondary dark:border-secondary mr-3"
+              className="w-10 h-10 bg-cover bg-center rounded-full 
+              border border-secondary dark:border-secondary mr-3"
             />
             <div className="flex flex-col">
               <h2 className="text-lg font-semibold text-secondary dark:text-secondary transition-colors duration-700">
                 {name}
               </h2>
-              <span className="text-sm text-secondary dark:text-secondary transition-colors duration-700">
+              <span className="text-sm text-secondary/80 dark:text-secondary/80 transition-colors duration-700">
                 ({title})
               </span>
             </div>

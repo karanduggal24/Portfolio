@@ -11,10 +11,16 @@ import {
 } from "./ProfileAnimation";
 import Skills from "./Skills/Skills";
 import About from "./About/About";
+import { useEffect } from "react";
 // import { Pointer } from "../ui/pointer";
 
 function Home() {
   const { scrollProgress } = useScrollPosition();
+  
+  useEffect(()=>{
+    document.title="Karan Duggal-Home"
+  },[])
+
 
   return (
     <div>
