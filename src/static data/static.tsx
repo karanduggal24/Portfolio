@@ -55,7 +55,7 @@ export const aboutData: AboutItem[] = [
   {
     id: 2,
     type: "experience",
-    title: "Front-End Developer",
+    title: "Full-Stack Developer",
     place: "BrainsPack, Yamunanagar",
     duration: "July 2025 - Present",
     mode: "Internship",
