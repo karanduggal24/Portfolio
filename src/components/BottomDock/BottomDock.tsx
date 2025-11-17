@@ -3,7 +3,7 @@ import { FaGithub } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
 import { FaFileDownload } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
-import Resume from "/src/assets/KaranDuggal Resume.pdf"
+import Resume from "/src/assets/FullStackResume.pdf";
 function BottomDock() {
   return (
     <div>
