@@ -1,12 +1,14 @@
 // import { IoLogoJavascript } from "react-icons/io5";
 import ReactClothing from "/src/assets/ProjectImg.png";
-
+import { SiMysql } from "react-icons/si";
+import { FaPython } from "react-icons/fa";
 import { SiJavascript } from "react-icons/si";
 import { SiTypescript } from "react-icons/si";
 import { FaHtml5 } from "react-icons/fa6";
 import { FaCss3Alt } from "react-icons/fa";
 import { FaReact } from "react-icons/fa";
 import { RiTailwindCssFill } from "react-icons/ri";
+import { SiFastapi } from "react-icons/si";
  interface AboutItem {
   id: number;
   type: "education" | "experience";
@@ -82,6 +84,35 @@ export const projects: Project[] = [
       "Clothing-Store-A sleek and modern online storefront built with React, offering a curated selection of apparel and accessories. With clean design and intuitive navigation, it’s designed to deliver a seamless shopping experience from product browsing to checkout.",
   },
 ];
+export const skills2: Skill[] = [
+  {
+    name: "Python",
+    id:1,
+    img:FaPython
+  },
+  {
+    name:"FastAPI",
+    id:2,
+    img:SiFastapi
+  },
+  {
+    name:"MySQL",
+    id:3,
+    img:SiMysql
+  },
+  {
+    name: "Python",
+    id:5,
+    img:FaPython
+  },
+  {
+    name:"FastAPI",
+    id:2,
+    img:SiFastapi
+  }
+
+]
+
 
 export const skills: Skill[] = [
   {
