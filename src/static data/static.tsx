@@ -79,7 +79,7 @@ export const projects: Project[] = [
     DesignLib: "ShadCN,MagicUI",
     Repo:"https://github.com/karanduggal24/React-Clothing",
     Description:
-      "Clothing-Store — A sleek and modern online storefront built with React, offering a curated selection of apparel and accessories. With clean design and intuitive navigation, it’s designed to deliver a seamless shopping experience from product browsing to checkout.",
+      "Clothing-Store-A sleek and modern online storefront built with React, offering a curated selection of apparel and accessories. With clean design and intuitive navigation, it’s designed to deliver a seamless shopping experience from product browsing to checkout.",
   },
 ];
 

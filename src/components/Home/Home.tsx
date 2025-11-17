@@ -45,10 +45,10 @@ function Home() {
             <div className="text-md sm:text-lg md:text-2xl mt-[6px] text-secondary dark:text-secondary leading-relaxed transition-colors duration-700">
               <TypingAnimation>Front-End Developer(Fresher)</TypingAnimation>
               <br />
-              <TypingAnimation>Indian</TypingAnimation>
-              <br />
-              <TypingAnimation>21 Year Old</TypingAnimation>
-              <br />
+              {/* <TypingAnimation>Indian</TypingAnimation> */}
+              {/* <br /> */}
+              {/* <TypingAnimation>21 Year Old</TypingAnimation> */}
+              {/* <br /> */}
               <div className="flex items-center justify-center md:justify-start gap-2 mt-1">
                 <Phone size={20} className="text-secondary dark:text-secondary" />
                 <TypingAnimation>+91-6239868675</TypingAnimation>
