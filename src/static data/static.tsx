@@ -45,23 +45,23 @@ interface Project {
 export const aboutData: AboutItem[] = [
   {
     id: 1,
+    type: "experience",
+    title: "Full-Stack Developer",
+    place: "Brainspack, Yamunanagar",
+    duration: "July 2025 - Present",
+    mode: "Internship",
+    icon: "Briefcase",
+    gradient: "from-secondary/10 to-secondary/20",
+  },
+  {
+    id: 2,
     type: "education",
     title: "Bachelor of Computer Applications",
     place: "D.A.V. College, Amritsar",
     duration: "2022 - 2025",
     icon: "GraduationCap",
     gradient: "from-secondary/20 to-secondary/10",
-  },
-  {
-    id: 2,
-    type: "experience",
-    title: "Full-Stack Developer",
-    place: "BrainsPack, Yamunanagar",
-    duration: "July 2025 - Present",
-    mode: "Internship",
-    icon: "Briefcase",
-    gradient: "from-secondary/10 to-secondary/20",
-  },
+  }
 ];
 
 
