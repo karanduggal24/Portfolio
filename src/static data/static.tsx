@@ -36,6 +36,7 @@ interface Project {
   Backend?: string;
   DesignLib: String;
   CSS: string;
+  DataBase: string;
   StateManage: string;
   Description: string;
   Repo:string
@@ -71,17 +72,19 @@ export const aboutData: AboutItem[] = [
 export const projects: Project[] = [
   {
     name: "Clothing-Store",
-    Highlights:["Responsive","Admin-Panel","Order-Confirmation(Mock)","Functional"],
+    Highlights:["Responsive","Admin-Panel","Order-Confirmation","Functional","RazorPay Gateway"],
     id: 1,
     img: ReactClothing,
     url: "https://react-clothing.vercel.app/",
     Frontend: "React",
+    Backend: " Python (FastAPI)",
+    DataBase: "MySQL",
     StateManage: "Redux-toolkit",
     CSS: "Tailwind-CSS",
     DesignLib: "ShadCN,MagicUI",
     Repo:"https://github.com/karanduggal24/React-Clothing",
     Description:
-      "Clothing-Store-A sleek and modern online storefront built with React, offering a curated selection of apparel and accessories. With clean design and intuitive navigation, it’s designed to deliver a seamless shopping experience from product browsing to checkout.",
+      "Clothing-Store -> A fully deployed, full-stack eCommerce platform built with React on the frontend and a robust Python FastAPI backend powered by a MySQL databaseDesigned with a sleek, modern UI and smooth navigation, it delivers a seamless shopping experience—from browsing curated apparel and accessories to secure checkout The system features efficient API communication, optimized performance, and a scalable architecture ready for real-world use.",
   },
 ];
 export const skills2: Skill[] = [

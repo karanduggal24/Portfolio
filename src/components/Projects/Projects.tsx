@@ -204,6 +204,7 @@ useEffect(()=>{
                       project.StateManage,
                       project.CSS,
                       project.DesignLib,
+                      project.DataBase,
                     ]
                       .filter(Boolean)
                       .map((tech, techIndex) => (
