@@ -7,108 +7,65 @@ import { FloatingProfileBadge } from "../ui/FloatingProfileBadge";
 import ScrollToTop from "../ui/ScrollToTop";
 
 function Projects() {
-useEffect(()=>{
-  document.title="Karan Duggal-Projects"
-},[])  
+  useEffect(() => {
+    document.title = "Karan Duggal-Projects";
+  }, []);
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.3,
-        delayChildren: 0.2,
-      },
-    },
+  // Animation for the tags (Features/Tech)
+  const tagVariants = {
+    hidden: { opacity: 0, y: 10, scale: 0.8 },
+    visible: { 
+      opacity: 1, 
+      y: 0, 
+      scale: 1,
+      transition: { type: "spring", stiffness: 260, damping: 20 }
+    }
   };
 
-  const headerVariants = {
-    hidden: { opacity: 0, y: -50 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.8,
-      },
-    },
+  const popHover = {
+    scale: 1.15,
+    y: -5,
+    backgroundColor: "rgba(var(--secondary-rgb), 0.2)", // Uses your secondary color if defined
   };
 
-  const projectVariants = {
-    hidden: { opacity: 0, y: 100 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.8,
-      },
-    },
-  };
+  // Shared class for tags
+  const tagClass = "px-3 py-1.5 text-xs sm:text-sm bg-secondary/10 border border-secondary/30 rounded-full text-secondary dark:text-secondary font-medium shadow-sm backdrop-blur-sm cursor-none transition-colors duration-200";
 
   return (
-    <motion.div 
+    <motion.div
       className="min-h-screen bg-primary dark:bg-primary py-12 px-4 sm:px-6 lg:px-8"
       initial="hidden"
       animate="visible"
-      variants={containerVariants}
     >
       <ScrollToTop />
-     <FloatingProfileBadge />
-      {/* Header Section */}
+      <FloatingProfileBadge />
+
+      {/* Header */}
       <motion.div 
-        className="max-w-7xl mx-auto mb-12"
-        variants={headerVariants}
+        className="max-w-7xl mx-auto mb-12 text-center"
+        initial={{ opacity: 0, y: -30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
       >
-        <motion.h1 
-          className="text-3xl sm:text-4xl lg:text-5xl text-center text-secondary dark:text-secondary font-semibold font-sans mb-4"
-          initial={{ opacity: 0, scale: 0.5 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-        >
-          Projects
-        </motion.h1>
-        <motion.div 
-          className="w-24 h-1 bg-secondary dark:bg-secondary mx-auto rounded-full"
-          initial={{ width: 0 }}
-          animate={{ width: 96 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-        ></motion.div>
+        <h1 className="text-3xl sm:text-4xl lg:text-5xl text-secondary font-semibold mb-4">Projects</h1>
+        <div className="w-24 h-1 bg-secondary mx-auto rounded-full" />
       </motion.div>
 
       {/* Projects Grid */}
-      <motion.div 
-        className="max-w-7xl mx-auto space-y-16 lg:space-y-24"
-        variants={containerVariants}
-      >
+      <div className="max-w-7xl mx-auto space-y-20 lg:space-y-32">
         {projects.map((project, index) => (
-          <motion.div
-            key={index}
-            className={`flex flex-col gap-8 ${
-              index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"
-            } items-center`}
-            variants={projectVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-          >
-            {/* Safari Preview */}
+          <div key={index} className={`flex flex-col gap-10 ${index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"} items-center`}>
+            
+            {/* Safari Preview - Slides in from side */}
             <motion.div 
               className="w-full lg:w-1/2 flex justify-center"
               initial={{ opacity: 0, x: index % 2 === 0 ? -100 : 100 }}
               whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              viewport={{ once: true, amount: 0.2 }}
             >
-              <motion.div 
-                className="w-full max-w-lg transform transition-transform duration-300"
-                whileHover={{ scale: 1.05, rotateY: 5 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <a
-                  href={project.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="cursor-none"
-                >
+              <motion.div whileHover={{ scale: 1.02 }} className="w-full max-w-lg">
+                <a href={project.url} target="_blank" rel="noopener noreferrer" className="cursor-none">
                   <Safari url={project.url} imageSrc={project.img} />
                 </a>
               </motion.div>
@@ -119,146 +76,89 @@ useEffect(()=>{
               className="w-full lg:w-1/2"
               initial={{ opacity: 0, x: index % 2 === 0 ? 100 : -100 }}
               whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              viewport={{ once: true, amount: 0.2 }}
             >
-              <motion.div 
-                className="border-2 border-dotted border-secondary dark:border-secondary rounded-2xl p-6 sm:p-8 lg:p-10 bg-primary/30 backdrop-blur-sm hover:bg-primary/50 transition-all duration-300 hover:shadow-xl"
-                whileHover={{ 
-                  scale: 1.02,
-                  boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
-                }}
-              >
-                <motion.h2 
-                  className="text-2xl sm:text-3xl lg:text-4xl font-semibold mb-4 text-secondary dark:text-secondary"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.6 }}
-                  viewport={{ once: true }}
-                >
-                  {project.name}
-                </motion.h2>
+              <div className="border-2 border-dotted border-secondary rounded-2xl p-6 sm:p-10 bg-primary/30 backdrop-blur-sm">
+                <h2 className="text-2xl sm:text-4xl font-semibold mb-4 text-secondary">{project.name}</h2>
+                <p className="text-sm sm:text-lg text-secondary/80 mb-6 leading-relaxed">{project.Description}</p>
 
-                {/* Description */}
-                {project.Description && (
-                  <motion.p 
-                    className="text-sm sm:text-base text-secondary dark:text-secondary lg:text-lg mb-6 leading-relaxed opacity-90"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.8 }}
-                    viewport={{ once: true }}
-                  >
-                    {project.Description}
-                  </motion.p>
-                )}
-    {Array.isArray(project.Highlights) && (
-  <motion.div 
-    className="mb-6"
-    initial={{ opacity: 0, y: 20 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.6, delay: 1.0 }}
-    viewport={{ once: true }}
-  >
-    {/* Section Title */}
-    <h3 className="text-base sm:text-lg font-semibold text-secondary dark:text-secondary mb-3">
-      Features:
-    </h3>
-
-    {/* Feature Tags */}
-    <div className="flex flex-wrap gap-2">
-      {project.Highlights.map((highlight, i) => (
-        <motion.span
-          key={i}
-          className="px-3 py-1.5 text-xs sm:text-sm bg-secondary/10 border border-secondary/30 
-                     rounded-full text-secondary dark:text-secondary font-medium 
-                     hover:bg-secondary/20 hover:scale-105 transition-all duration-200
-                     shadow-sm backdrop-blur-sm"
-          initial={{ opacity: 0, scale: 0.8 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.4, delay: 1.2 + i * 0.1 }}
-          viewport={{ once: true }}
-          whileHover={{ scale: 1.1, y: -2 }}
-        >
-          {highlight}
-        </motion.span>
-      ))}
-    </div>
-  </motion.div>
-)}
-
-                {/* Technologies Section */}
-                <motion.div 
-                  className="space-y-3"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 1.4 }}
-                  viewport={{ once: true }}
-                >
-                  <h3 className="text-base sm:text-lg font-semibold text-secondary dark:text-secondary">
-                    Technologies Used:
-                  </h3>
-                  <div className="flex flex-wrap gap-2">
-                    {[
-                      project.Frontend,
-                      project.Backend,
-                      project.StateManage,
-                      project.CSS,
-                      project.DesignLib,
-                      project.DataBase,
-                      project.Deployment
-                    ]
-                      .filter(Boolean)
-                      .map((tech, techIndex) => (
+                {/* Features Section */}
+                {Array.isArray(project.Highlights) && (
+                  <div className="mb-6">
+                    <h3 className="text-base font-bold text-secondary mb-3 uppercase tracking-tight">Features</h3>
+                    <motion.div 
+                      className="flex flex-wrap gap-2"
+                      initial="hidden"
+                      whileInView="visible"
+                      viewport={{ once: true }}
+                      transition={{ staggerChildren: 0.1 }}
+                    >
+                      {project.Highlights.map((highlight, i) => (
                         <motion.span
-                          key={techIndex}
-                          className="px-3 py-1.5 text-xs sm:text-sm bg-secondary/10 border border-secondary/30 rounded-full text-secondary dark:text-secondary font-medium hover:bg-secondary/20 transition-colors duration-200"
-                          initial={{ opacity: 0, scale: 0.8 }}
-                          whileInView={{ opacity: 1, scale: 1 }}
-                          transition={{ duration: 0.4, delay: 1.6 + techIndex * 0.1 }}
-                          viewport={{ once: true }}
-                          whileHover={{ scale: 1.1, y: -2 }}
+                          key={i}
+                          variants={tagVariants}
+                          whileHover={popHover}
+                          className={tagClass}
                         >
-                          {tech}
+                          {highlight}
                         </motion.span>
                       ))}
+                    </motion.div>
                   </div>
-                </motion.div>
+                )}
 
-                {/* View Project Link */}
-                <motion.div 
-                  className="flex items-center gap-4 mt-6"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 1.8 }}
-                  viewport={{ once: true }}
-                >
-                  <motion.a
-                    href={project.Repo}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="cursor-none inline-block text-secondary rounded-lg font-medium hover:opacity-90 transition-opacity duration-200"
-                    whileHover={{ scale: 1.1, rotate: 5 }}
-                    whileTap={{ scale: 0.95 }}
+                {/* Technologies Section */}
+                <div className="mb-8">
+                  <h3 className="text-base font-bold text-secondary mb-3 uppercase tracking-tight">Tech Stack</h3>
+                  <motion.div 
+                    className="flex flex-wrap gap-2"
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    transition={{ staggerChildren: 0.1, delayChildren: 0.3 }}
                   >
-                    <FaGithub size="2em" />
-                  </motion.a>
+                    {[
+                      project.Frontend, project.Backend, project.StateManage,
+                      project.CSS, project.DesignLib, project.DataBase, project.Deployment
+                    ].filter(Boolean).map((tech, techIndex) => (
+                      <motion.span
+                        key={techIndex}
+                        variants={tagVariants}
+                        whileHover={popHover}
+                        className={tagClass}
+                      >
+                        {tech}
+                      </motion.span>
+                    ))}
+                  </motion.div>
+                </div>
 
+                {/* Links */}
+                <div className="flex items-center gap-6">
+                  <motion.a 
+                    href={project.Repo} 
+                    target="_blank" 
+                    className="text-secondary cursor-none" 
+                    whileHover={{ scale: 1.2, rotate: 5 }}
+                  >
+                    <FaGithub size="2.5em" />
+                  </motion.a>
                   <motion.a
                     href={project.url}
                     target="_blank"
-                    rel="noopener noreferrer"
-                    className="cursor-none inline-block px-6 py-2 bg-secondary text-primary rounded-lg font-medium hover:opacity-90 transition-opacity duration-200"
+                    className="px-8 py-3 bg-secondary text-primary rounded-xl font-bold shadow-lg cursor-none"
                     whileHover={{ scale: 1.05, y: -2 }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    View Project
+                    View Live Project
                   </motion.a>
-                </motion.div>
-              </motion.div>
+                </div>
+              </div>
             </motion.div>
-          </motion.div>
+          </div>
         ))}
-      </motion.div>
+      </div>
     </motion.div>
   );
 }
