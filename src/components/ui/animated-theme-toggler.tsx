@@ -14,32 +14,19 @@ export const AnimatedThemeToggler = ({
   duration = 400,
   ...props
 }: AnimatedThemeTogglerProps) => {
-  const [isDark, setIsDark] = useState(false)
+  // Initialize state based on current DOM state (set by the script in HTML)
+  const [isDark, setIsDark] = useState(() => {
+    return document.documentElement.classList.contains('dark')
+  })
   const buttonRef = useRef<HTMLButtonElement>(null)
 
   useEffect(() => {
-    const initializeTheme = () => {
-      const savedTheme = localStorage.getItem("theme")
-      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches
-      
-      // Use saved theme if available, otherwise use device preference
-      const shouldBeDark = savedTheme ? savedTheme === "dark" : prefersDark
-      
-      if (shouldBeDark) {
-        document.documentElement.classList.add("dark")
-      } else {
-        document.documentElement.classList.remove("dark")
-      }
-      
-      setIsDark(shouldBeDark)
-    }
-
     const updateTheme = () => {
       setIsDark(document.documentElement.classList.contains("dark"))
     }
 
-    // Initialize theme on first load
-    initializeTheme()
+    // Sync with current theme state (already set by HTML script)
+    updateTheme()
 
     // Listen for system theme changes
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)")
