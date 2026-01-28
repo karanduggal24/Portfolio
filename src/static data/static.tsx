@@ -9,6 +9,8 @@ import { FaCss3Alt } from "react-icons/fa";
 import { FaReact } from "react-icons/fa";
 import { RiTailwindCssFill } from "react-icons/ri";
 import { SiFastapi } from "react-icons/si";
+import { SiNextdotjs } from "react-icons/si";
+
  interface AboutItem {
   id: number;
   type: "education" | "experience";
@@ -109,9 +111,9 @@ export const skills2: Skill[] = [
     img:FaPython
   },
   {
-    name:"FastAPI",
-    id:2,
-    img:SiFastapi
+    name:"JavaScript",
+    id:4,
+    img:SiJavascript
   }
 
 ]
@@ -119,9 +121,9 @@ export const skills2: Skill[] = [
 
 export const skills: Skill[] = [
   {
-    name: "Javascript",
+    name: "Next.js",
     id: 1,
-    img: SiJavascript,
+    img: SiNextdotjs,
   },
   {
     name: "TypeScript",
