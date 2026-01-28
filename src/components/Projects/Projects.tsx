@@ -205,6 +205,7 @@ useEffect(()=>{
                       project.CSS,
                       project.DesignLib,
                       project.DataBase,
+                      project.Deployment
                     ]
                       .filter(Boolean)
                       .map((tech, techIndex) => (

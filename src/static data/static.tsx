@@ -38,6 +38,7 @@ interface Project {
   Backend?: string;
   DesignLib: String;
   CSS: string;
+  Deployment:string;
   DataBase: string;
   StateManage: string;
   Description: string;
@@ -83,6 +84,7 @@ export const projects: Project[] = [
     DataBase: "MySQL",
     StateManage: "Redux-toolkit",
     CSS: "Tailwind-CSS",
+    Deployment:"Vercel (Frontend Deployment),Render(Backend Deployment)",
     DesignLib: "ShadCN,MagicUI",
     Repo:"https://github.com/karanduggal24/React-Clothing",
     Description:
