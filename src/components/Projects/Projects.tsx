@@ -1,6 +1,5 @@
 import { useEffect } from "react";
-import { motion } from "motion/react";
-// Import the necessary types
+import { motion} from "motion/react";
 import type { Variants, HTMLMotionProps } from "motion/react";
 import { projects } from "@/static data/static";
 import { Safari } from "../ui/safari";
@@ -98,7 +97,9 @@ function Projects() {
             </div>
 
             {/* Project Details */}
-            <div className="w-full lg:w-1/2">
+            <motion.div
+            whileHover={{scale:1.05,y:1 }}
+             className="w-full lg:w-1/2">
               <div className="border-2 border-dotted border-secondary dark:border-secondary rounded-2xl p-6 sm:p-8 lg:p-10 bg-primary/30 backdrop-blur-sm hover:shadow-2xl transition-shadow duration-500">
                 <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold mb-4 text-secondary dark:text-secondary">
                   {project.name}
@@ -182,7 +183,7 @@ function Projects() {
                   </motion.a>
                 </div>
               </div>
-            </div>
+            </motion.div>
           </motion.div>
         ))}
       </div>
