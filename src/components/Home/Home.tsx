@@ -43,7 +43,7 @@ function Home() {
 
           {scrollProgress < 0.3 && (
             <div className="text-md sm:text-lg md:text-2xl mt-1.5 text-secondary dark:text-secondary leading-relaxed transition-colors duration-700">
-              <TypingAnimation>Full-Stack Developer(Fresher)</TypingAnimation>
+              <TypingAnimation>Full-Stack Developer</TypingAnimation>
               <br />
               {/* <TypingAnimation>Indian</TypingAnimation> */}
               {/* <br /> */}
