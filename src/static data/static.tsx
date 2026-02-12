@@ -71,6 +71,22 @@ export const aboutData: AboutItem[] = [
 
 // interface Skills extends Array<Skills>{}
 export const projects: Project[] = [
+  
+  {
+    name: "Turf-Kings",
+    Highlights: ["Responsive", "admin dashboard", "multi-sports", "functional"],
+    id: 1,
+    img: TurfKings,
+    url: "https://turf-kings.vercel.app/",
+    Frontend: "NextJS",
+    DataBase: "Supabase(PostgreSQL)",
+    StateManage: "Zustand",
+    CSS: "Tailwind-CSS",
+    Deployment: "Vercel for Deployment",
+    Repo: "https://github.com/karanduggal24/Turf-Kings",
+    Description:
+      "TurfKings | Turf Booking Platform Developed a comprehensive web application designed to streamline the process of finding and booking sports facilities. The platform features a dynamic search system for various sports like cricket and football, allowing users to browse premium venues, check real-time availability, and manage bookings. It focuses on a high-performance user interface with a seamless flow from turf discovery to final reservation.",
+  },
   {
     name: "Clothing-Store",
     Highlights: [
@@ -80,7 +96,7 @@ export const projects: Project[] = [
       "Functional",
       "RazorPay Gateway",
     ],
-    id: 1,
+    id: 2,
     img: Clothing,
     url: "https://react-clothing.vercel.app/",
     Frontend: "React",
@@ -93,21 +109,6 @@ export const projects: Project[] = [
     Repo: "https://github.com/karanduggal24/React-Clothing",
     Description:
       "Clothing-Store -> A fully deployed, full-stack eCommerce platform built with React on the frontend and a robust Python FastAPI backend powered by a MySQL databaseDesigned with a sleek, modern UI and smooth navigation, it delivers a seamless shopping experience—from browsing curated apparel and accessories to secure checkout The system features efficient API communication, optimized performance, and a scalable architecture ready for real-world use.",
-  },
-  {
-    name: "Turf-Kings",
-    Highlights: ["Responsive", "Ongoing"],
-    id: 2,
-    img: TurfKings,
-    url: "https://turf-kings.vercel.app/",
-    Frontend: "NextJS",
-    DataBase: "Supabase(PostgreSQL)",
-    StateManage: "Zustand",
-    CSS: "Tailwind-CSS",
-    Deployment: "Vercel for Deployment",
-    Repo: "https://github.com/karanduggal24/Turf-Kings",
-    Description:
-      "TurfKings | Turf Booking Platform Developed a comprehensive web application designed to streamline the process of finding and booking sports facilities. The platform features a dynamic search system for various sports like cricket and football, allowing users to browse premium venues, check real-time availability, and manage bookings. It focuses on a high-performance user interface with a seamless flow from turf discovery to final reservation.",
   },
 ];
 export const skills2: Skill[] = [
