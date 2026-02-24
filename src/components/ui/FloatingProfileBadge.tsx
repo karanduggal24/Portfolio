@@ -10,19 +10,19 @@ export const FloatingProfileBadge = () => (
   >
     <div
       className="flex items-center gap-2 sm:gap-3 px-2 py-1.5 sm:px-3 sm:py-2 rounded-full 
-      bg-primary/80 dark:bg-primary/80 backdrop-blur-md shadow-md 
-      border border-secondary/40 dark:border-secondary/30 transition-all duration-700"
+      bg-white/10 dark:bg-black/10 backdrop-blur-md shadow-[0_4px_24px_rgba(0,0,0,0.08)] dark:shadow-[0_4px_24px_rgba(0,0,0,0.3)]
+      border border-white/10 dark:border-white/10 transition-all duration-700"
     >
       <div
         style={{ backgroundImage: `url(${profileimg})` }}
         className="w-7 h-7 sm:w-10 sm:h-10 bg-cover bg-center rounded-full 
-        border border-secondary dark:border-secondary shadow-md"
+        border border-secondary/30 dark:border-secondary/30 shadow-md"
       />
       <div className="flex flex-col">
         <h2 className="text-xs sm:text-base font-semibold text-secondary dark:text-secondary whitespace-nowrap">
           Karan Duggal
         </h2>
-        <span className="text-[10px] sm:text-xs text-secondary/80 dark:text-secondary/80">
+        <span className="text-[10px] sm:text-xs text-secondary/60 dark:text-secondary/60">
           Front-End Developer
         </span>
       </div>

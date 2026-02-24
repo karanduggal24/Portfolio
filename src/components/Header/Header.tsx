@@ -26,7 +26,7 @@ function Header() {
     ].join(" ");
 
   return (
-    <header className="w-full sticky top-0 left-0 z-50 shadow-md bg-primary dark:bg-primary transition-colors duration-500 select-none">
+    <header className="w-full sticky top-0 left-0 z-50 border-b border-white/10 dark:border-white/10 bg-white/10 dark:bg-black/10 backdrop-blur-md shadow-[0_4px_24px_rgba(0,0,0,0.08)] dark:shadow-[0_4px_24px_rgba(0,0,0,0.3)] transition-colors duration-500 select-none">
       {/* <Pointer/> */}
       <nav className="max-w-7xl mx-auto flex items-center justify-between h-[70px] px-6 relative">
         {/* Logo */}
@@ -75,7 +75,7 @@ function Header() {
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.4, ease: "easeInOut" }}
-            className="overflow-hidden md:hidden bg-primary dark:bg-primary border-t border-gray-200 dark:border-gray-800 shadow-inner"
+            className="overflow-hidden md:hidden bg-white/10 dark:bg-black/10 backdrop-blur-md border-t border-white/10 dark:border-white/10 shadow-inner"
           >
             <ul className="flex flex-col items-center space-y-4 py-4">
               <li>

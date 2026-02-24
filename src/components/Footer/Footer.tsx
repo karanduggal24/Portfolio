@@ -4,7 +4,7 @@ function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="w-full bg-primary dark:bg-primary border-t border-gray-200 dark:border-gray-800 transition-colors duration-500 mt-8 mb-12">
+    <footer className="w-full border-t border-white/10 dark:border-white/10 bg-white/10 dark:bg-black/10 backdrop-blur-md shadow-[0_4px_24px_rgba(0,0,0,0.08)] dark:shadow-[0_4px_24px_rgba(0,0,0,0.3)] transition-colors duration-500 mt-8 mb-12">
       <div className="max-w-7xl mx-auto px-6 py-8">
         {/* Links Section */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-6">
@@ -12,7 +12,7 @@ function Footer() {
             href="https://github.com/karanduggal24"
             target="_blank"
             rel="noopener noreferrer"
-            className=" cursor-none flex items-center gap-2 text-secondary dark:text-secondary hover:opacity-80 transition-opacity duration-300"
+            className="cursor-none flex items-center gap-2 text-secondary dark:text-secondary hover:opacity-80 transition-opacity duration-300"
           >
             <FaGithub size="1.2em" />
             <span className="text-sm font-medium">GitHub</span>
@@ -46,8 +46,8 @@ function Footer() {
         </div>
 
         {/* Copyright Section */}
-        <div className="text-center border-t border-gray-200 dark:border-gray-800 pt-6">
-          <p className="text-sm text-foreground opacity-70 transition-colors duration-500">
+        <div className="text-center border-t border-white/10 dark:border-white/10 pt-6">
+          <p className="text-sm text-secondary/60 dark:text-secondary/60 transition-colors duration-500">
             © {currentYear} Karan Duggal. All rights reserved.
           </p>
         </div>
