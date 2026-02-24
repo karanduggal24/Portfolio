@@ -11,6 +11,7 @@ import { FaReact } from "react-icons/fa";
 import { RiTailwindCssFill } from "react-icons/ri";
 import { SiFastapi } from "react-icons/si";
 import { SiNextdotjs } from "react-icons/si";
+import { BiLogoPostgresql } from "react-icons/bi";
 
 interface AboutItem {
   id: number;
@@ -128,15 +129,21 @@ export const skills2: Skill[] = [
     img: SiMysql,
   },
   {
-    name: "Python",
+    name: "PostgreSQL",
     id: 5,
-    img: FaPython,
+    img: BiLogoPostgresql,
   },
   {
     name: "JavaScript",
     id: 4,
     img: SiJavascript,
   },
+  {
+    name: "Next.js",
+    id: 6,
+    img: SiNextdotjs,
+  },
+  
 ];
 
 export const skills: Skill[] = [
