@@ -1,5 +1,4 @@
 import image from "/src/assets/MyImage.jpg";
-import { TypingAnimation } from "../ui/typing-animation";
 import {
   MatrixRain,
   BackgroundOverlay,
@@ -13,7 +12,6 @@ import Skills from "./Skills/Skills";
 import About from "./About/About";
 import { useEffect } from "react";
 import { Phone, Mail } from "lucide-react";
-// import { Pointer } from "../ui/pointer";
 
 function Home() {
   const { scrollProgress } = useScrollPosition();
@@ -24,38 +22,50 @@ function Home() {
 
 
   return (
-    <div>
-      {/* Hero Section */}
-      <div className="relative w-full min-h-[88vh] sm:min-h-[93vh] md:min-h-[90.3vh] flex flex-col md:flex-row items-center justify-center px-6 md:px-16 text-center md:text-left overflow-hidden bg-primary dark:bg-primary transition-colors duration-700">
+    <div className="w-full overflow-x-hidden">
+      {/* Hero Section - Clean Design - Centered on All Devices */}
+      <div className="relative w-full min-h-[88vh] sm:min-h-[93vh] md:min-h-[90.3vh] flex flex-col items-center justify-center px-4 sm:px-6 md:px-16 py-8 sm:py-0 text-center overflow-hidden transition-colors duration-700">
         <MatrixRain />
         <BackgroundOverlay />
 
-        <MovingProfileImage 
-          src={image} 
-          scrollProgress={scrollProgress}
-          className="mb-6 md:mb-0 md:mr-12" 
-        />
+        {/* Ambient blobs - contained */}
+        <div className="pointer-events-none absolute -top-40 -left-40 w-[300px] h-[300px] sm:w-[400px] sm:h-[400px] rounded-full bg-secondary/5 dark:bg-secondary/8 blur-[100px] -z-10" />
+        <div className="pointer-events-none absolute -bottom-40 -right-40 w-[300px] h-[300px] sm:w-[400px] sm:h-[400px] rounded-full bg-secondary/5 dark:bg-secondary/8 blur-[100px] -z-10" />
 
-        <div className="relative z-10 text-Secondary flex flex-col justify-center items-center md:items-start">
+        {/* Profile Image - Clean Design - Centered */}
+        <div className="mb-6 relative z-10 flex justify-center">
+          <MovingProfileImage 
+            src={image} 
+            scrollProgress={scrollProgress}
+            className="" 
+          />
+        </div>
+
+        {/* Info Section - Clean Design - Centered */}
+        <div className="relative z-10 text-Secondary flex flex-col justify-center items-center w-full max-w-[90vw] sm:max-w-[600px] px-2">
           <MovingTitle scrollProgress={scrollProgress}>
             Karan Duggal
           </MovingTitle>
 
           {scrollProgress < 0.3 && (
-            <div className="text-md sm:text-lg md:text-2xl mt-1.5 text-secondary dark:text-secondary leading-relaxed transition-colors duration-700">
-              <TypingAnimation>Full-Stack Developer</TypingAnimation>
-              <br />
-              {/* <TypingAnimation>Indian</TypingAnimation> */}
-              {/* <br /> */}
-              {/* <TypingAnimation>21 Year Old</TypingAnimation> */}
-              {/* <br /> */}
-              <div className="flex items-center justify-center md:justify-start gap-2 mt-1">
-                <Phone size={20} className="text-secondary dark:text-secondary" />
-                <TypingAnimation>+91-6239868675</TypingAnimation>
-              </div>
-              <div className="flex items-center justify-center md:justify-start gap-2 mt-1">
-                <Mail size={20} className="text-secondary dark:text-secondary" />
-                <TypingAnimation>karanduggal6239@gmail.com</TypingAnimation>
+            <div className="text-sm sm:text-base md:text-lg lg:text-xl mt-6 text-secondary dark:text-secondary leading-relaxed transition-colors duration-700 w-full">
+              <div className="font-semibold mb-6 text-base sm:text-lg md:text-xl lg:text-2xl">Full-Stack Developer</div>
+              
+              {/* Contact Info - Clean Design - Centered */}
+              <div className="flex flex-col gap-3 w-full items-center">
+                <div className="flex items-center justify-center gap-3">
+                  <div className="flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-secondary/10 dark:bg-secondary/10 border border-secondary/20 flex-shrink-0">
+                    <Phone size={16} className="text-secondary dark:text-secondary sm:w-[18px] sm:h-[18px]" />
+                  </div>
+                  <span className="text-sm sm:text-base md:text-lg">+91-6239868675</span>
+                </div>
+                
+                <div className="flex items-center justify-center gap-3">
+                  <div className="flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-secondary/10 dark:bg-secondary/10 border border-secondary/20 flex-shrink-0">
+                    <Mail size={16} className="text-secondary dark:text-secondary sm:w-[18px] sm:h-[18px]" />
+                  </div>
+                  <span className="text-sm sm:text-base md:text-lg break-words">karanduggal6239@gmail.com</span>
+                </div>
               </div>
             </div>
           )}

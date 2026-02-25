@@ -6,43 +6,43 @@ import { MdEmail } from "react-icons/md";
 import Resume from "/src/assets/KaranDuggal-FullStack-Resume.pdf";
 function BottomDock() {
   return (
-    <div>
-      
-      {/* Fixed Dock Bar */}
-      <div className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50">
-        <Dock className="backdrop-blur-md bg-white/20 dark:bg-white/30 border border-white/10 rounded-2xl shadow-lg p-2 flex gap-4 transition-all duration-300">
+    <div className="fixed bottom-4 left-0 right-0 z-50 flex justify-center px-2 pointer-events-none">
+      <div className="pointer-events-auto">
+        <Dock className="backdrop-blur-md bg-white/20 dark:bg-white/30 border border-white/10 rounded-2xl shadow-lg p-2 flex gap-2 sm:gap-3 transition-all duration-300">
           
-          {/* GitHub (External) */}
+          {/* GitHub */}
           <a
             href="https://github.com/karanduggal24"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <DockIcon className="  hover:scale-110 transition-transform duration-200 cursor-none text-secondary dark:text-secondary">
-              <FaGithub size="1.5em" />
+            <DockIcon className="hover:scale-110 transition-transform duration-200 cursor-none text-secondary dark:text-secondary">
+              <FaGithub className="text-lg sm:text-xl" />
             </DockIcon>
           </a>
 
-          {/* Settings (Internal route) */}
+          {/* LinkedIn */}
           <a
             href="https://www.linkedin.com/in/karan-duggal-7b93822b4/"
             target="_blank"
             rel="noopener noreferrer"
           >
             <DockIcon className="hover:scale-110 transition-transform duration-200 cursor-none text-secondary dark:text-secondary">
-              <FaLinkedin size="1.5em" />
+              <FaLinkedin className="text-lg sm:text-xl" />
             </DockIcon>
           </a>
 
-          {/* Search (Internal route) */}
+          {/* Resume Download */}
           <a href={Resume} download>
             <DockIcon className="hover:scale-110 transition-transform duration-200 cursor-none text-secondary dark:text-secondary">
-              <FaFileDownload size="1.5em" />
+              <FaFileDownload className="text-lg sm:text-xl" />
             </DockIcon>
           </a>
+          
+          {/* Email */}
           <a href="mailto:karanduggal6239@gmail.com">
             <DockIcon className="hover:scale-110 transition-transform duration-200 cursor-none text-secondary dark:text-secondary">
-              <MdEmail size="1.5em" />
+              <MdEmail className="text-lg sm:text-xl" />
             </DockIcon>
           </a>
         </Dock>

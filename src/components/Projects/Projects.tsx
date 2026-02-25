@@ -12,11 +12,11 @@ function Projects() {
   }, []);
 
   return (
-    <section className="relative w-full min-h-screen px-4 sm:px-8 md:px-12 lg:px-24 py-16 sm:py-24 overflow-hidden">
+    <section className="relative w-full min-h-screen px-4 sm:px-8 md:px-12 lg:px-24 py-16 sm:py-24 overflow-x-hidden">
       
       {/* Ambient blobs */}
-      <div className="pointer-events-none absolute -top-60 -left-60 w-[500px] h-[500px] rounded-full bg-secondary/5 dark:bg-secondary/8 blur-[120px] -z-10" />
-      <div className="pointer-events-none absolute -bottom-60 -right-60 w-[500px] h-[500px] rounded-full bg-secondary/5 dark:bg-secondary/8 blur-[120px] -z-10" />
+      <div className="pointer-events-none absolute -top-40 -left-40 w-[400px] h-[400px] rounded-full bg-secondary/5 dark:bg-secondary/8 blur-[120px] -z-10" />
+      <div className="pointer-events-none absolute -bottom-40 -right-40 w-[400px] h-[400px] rounded-full bg-secondary/5 dark:bg-secondary/8 blur-[120px] -z-10" />
 
       <ScrollToTop />
       <FloatingProfileBadge />

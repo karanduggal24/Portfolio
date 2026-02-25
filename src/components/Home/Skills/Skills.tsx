@@ -95,8 +95,8 @@ function Skills() {
     <section className="relative w-full py-16 sm:py-24 px-4 sm:px-8 max-w-5xl mx-auto">
 
       {/* Ambient glow blobs for glass depth */}
-      <div className="pointer-events-none absolute -top-60 -left-60 w-[500px] h-[500px] rounded-full bg-secondary/5 dark:bg-secondary/8 blur-[120px] -z-10" />
-      <div className="pointer-events-none absolute -bottom-60 -right-60 w-[500px] h-[500px] rounded-full bg-secondary/5 dark:bg-secondary/8 blur-[120px] -z-10" />
+      <div className="pointer-events-none absolute -top-40 -left-40 w-[400px] h-[400px] rounded-full bg-secondary/5 dark:bg-secondary/8 blur-[120px] -z-10" />
+      <div className="pointer-events-none absolute -bottom-40 -right-40 w-[400px] h-[400px] rounded-full bg-secondary/5 dark:bg-secondary/8 blur-[120px] -z-10" />
 
       {/* Heading */}
       <div className="text-center mb-14 sm:mb-20">
