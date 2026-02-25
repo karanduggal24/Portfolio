@@ -12,7 +12,7 @@ function Projects() {
   }, []);
 
   return (
-    <section className="relative w-full min-h-screen px-4 sm:px-8 md:px-12 lg:px-24 py-16 sm:py-24 overflow-x-hidden">
+    <section className="relative w-full px-4 sm:px-8 md:px-12 lg:px-24 py-16 sm:py-24">
       
       {/* Ambient blobs */}
       <div className="pointer-events-none absolute -top-40 -left-40 w-[400px] h-[400px] rounded-full bg-secondary/5 dark:bg-secondary/8 blur-[120px] -z-10" />
@@ -25,8 +25,8 @@ function Projects() {
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        viewport={{ once: true }}
+        transition={{ duration: 0.4 }}
+        viewport={{ once: true, amount: 0.3 }}
         className="text-center mb-14 sm:mb-20 relative z-10"
       >
         <p className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.4em] text-secondary/35 dark:text-secondary/35 mb-3">
@@ -59,8 +59,8 @@ function ProjectBentoCard({
     <motion.div
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, delay: index * 0.15 }}
-      viewport={{ once: true, amount: 0.1 }}
+      transition={{ duration: 0.4, delay: index * 0.1 }}
+      viewport={{ once: true, amount: 0.2 }}
       className="group relative overflow-hidden rounded-2xl sm:rounded-3xl border border-white/10 dark:border-white/10 bg-white/10 dark:bg-white/5 backdrop-blur-md shadow-[0_4px_24px_rgba(0,0,0,0.08)] dark:shadow-[0_4px_24px_rgba(0,0,0,0.3)] hover:bg-white/20 dark:hover:bg-white/10 hover:border-secondary/30 hover:shadow-[0_8px_40px_rgba(0,0,0,0.15)] dark:hover:shadow-[0_8px_40px_rgba(0,0,0,0.5)] transition-all duration-500"
     >
       {/* Top shine */}

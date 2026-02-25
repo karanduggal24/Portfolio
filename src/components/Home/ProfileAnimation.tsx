@@ -8,14 +8,22 @@ export const useScrollPosition = () => {
   const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      const maxScroll = 800; // ⬆️ Increased distance for smoother transition
-      const progress = Math.min(currentScrollY / maxScroll, 1);
+    let ticking = false;
 
-      setScrollY(currentScrollY);
-      setScrollProgress(progress);
-      setIsScrolled(currentScrollY > 100);
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const currentScrollY = window.scrollY;
+          const maxScroll = 800;
+          const progress = Math.min(currentScrollY / maxScroll, 1);
+
+          setScrollY(currentScrollY);
+          setScrollProgress(progress);
+          setIsScrolled(currentScrollY > 100);
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });

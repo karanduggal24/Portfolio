@@ -162,8 +162,26 @@
   * {
     @apply border-border outline-ring/50;
   }
+  
+  html {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+  
   body {
     @apply bg-background text-foreground;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+  
+  /* Optimize animations for mobile */
+  @media (max-width: 767px) {
+    * {
+      animation-duration: 0.3s !important;
+      transition-duration: 0.3s !important;
+    }
   }
   
   /* Ensure custom cursor works properly - only on medium screens and above */

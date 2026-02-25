@@ -22,9 +22,9 @@ function Home() {
 
 
   return (
-    <div className="w-full overflow-x-hidden">
+    <div className="w-full">
       {/* Hero Section - Clean Design - Centered on All Devices */}
-      <div className="relative w-full min-h-[88vh] sm:min-h-[93vh] md:min-h-[90.3vh] flex flex-col items-center justify-center px-4 sm:px-6 md:px-16 py-8 sm:py-0 text-center overflow-hidden transition-colors duration-700">
+      <div className="relative w-full min-h-[88vh] sm:min-h-[93vh] md:min-h-[90.3vh] flex flex-col items-center justify-center px-4 sm:px-6 md:px-16 py-8 sm:py-0 text-center transition-colors duration-700">
         <MatrixRain />
         <BackgroundOverlay />
 

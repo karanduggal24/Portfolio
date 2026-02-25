@@ -10,7 +10,7 @@ const iconMap = {
 
 function About() {
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center gap-6 sm:gap-10 w-full overflow-x-hidden px-4 sm:px-8 md:px-12 lg:px-24 py-8 sm:py-16 relative">
+    <section className="min-h-screen flex flex-col items-center justify-center gap-6 sm:gap-10 w-full px-4 sm:px-8 md:px-12 lg:px-24 py-8 sm:py-16 relative">
       {/* Background gradient effect */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-secondary/5 to-transparent pointer-events-none" />
 
@@ -18,8 +18,8 @@ function About() {
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        viewport={{ once: true }}
+        transition={{ duration: 0.4 }}
+        viewport={{ once: true, amount: 0.3 }}
         className="relative z-10"
       >
         <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-center text-secondary dark:text-secondary font-bold font-sans mb-2">
@@ -40,8 +40,8 @@ function About() {
                 x: item.type === "education" ? -40 : 40,
               }}
               whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.2 }}
-              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: index * 0.1 }}
+              viewport={{ once: true, amount: 0.3 }}
               className="group relative"
             >
               {/* Glow background */}
