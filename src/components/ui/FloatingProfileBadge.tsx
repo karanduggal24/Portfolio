@@ -23,7 +23,7 @@ export const FloatingProfileBadge = () => (
           Karan Duggal
         </h2>
         <span className="text-[10px] sm:text-xs text-secondary/60 dark:text-secondary/60">
-          Front-End Developer
+          Full Stack Developer
         </span>
       </div>
     </div>
