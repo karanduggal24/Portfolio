@@ -72,7 +72,7 @@ export const MovingProfileImage = ({
               Karan Duggal
             </h2>
             <span className="text-[10px] sm:text-xs text-secondary/80 dark:text-secondary/80">
-              Front-End Developer
+              Full Stack Developer
             </span>
           </div>
         </div>
