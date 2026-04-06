@@ -20,7 +20,7 @@ function About() {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}
         viewport={{ once: true, amount: 0.3 }}
-        className="relative z-10"
+        className="relative z-1"
       >
         <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-center text-secondary dark:text-secondary font-bold font-sans mb-2">
           Education & Experience
@@ -29,7 +29,7 @@ function About() {
       </motion.div>
 
       {/* Cards Section */}
-      <div className="flex flex-col gap-4 sm:gap-6 w-full max-w-3xl relative z-10">
+      <div className="flex flex-col gap-4 sm:gap-6 w-full max-w-3xl relative z-1">
         {aboutData.map((item, index: number) => {
           const Icon = iconMap[item.icon];
           return (
