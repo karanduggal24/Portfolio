@@ -1,7 +1,7 @@
 import image from "/src/assets/MyImage.jpg";
 import {
   MatrixRain,
-  BackgroundOverlay,
+  // BackgroundOverlay,
 } from "./Animation";
 import {
   MovingProfileImage,
@@ -26,7 +26,7 @@ function Home() {
       {/* Hero Section - Clean Design - Centered on All Devices */}
       <div className="relative w-full min-h-[88vh] sm:min-h-[93vh] md:min-h-[90.3vh] flex flex-col items-center justify-center px-4 sm:px-6 md:px-16 py-8 sm:py-0 text-center transition-colors duration-700">
         <MatrixRain />
-        <BackgroundOverlay />
+        {/* <BackgroundOverlay /> */}
 
         {/* Ambient blobs - contained */}
         <div className="pointer-events-none absolute -top-40 -left-40 w-[300px] h-[300px] sm:w-[400px] sm:h-[400px] rounded-full bg-secondary/5 dark:bg-secondary/8 blur-[100px] -z-10" />
