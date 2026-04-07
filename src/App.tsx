@@ -6,11 +6,14 @@ import { Pointer } from "./components/ui/pointer";
 import Projects from "./components/Projects/Projects";
 import ScrollToTop from "./components/ui/ScrollToTop";
 import Footer from "./components/Footer/Footer";
+import { Analytics } from "@vercel/analytics/react";
+// import { Analytics } from "@vercel/analytics";
 
 function App() {
   return (
 
     <>
+    <Analytics />
     <Pointer/>
     <ScrollToTop/>
       <Header />
