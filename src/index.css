@@ -168,12 +168,18 @@
     -webkit-overflow-scrolling: touch;
     overflow-x: hidden;
     overflow-y: auto;
+    cursor: none;
   }
   
   body {
     @apply bg-background text-foreground;
     overflow-x: hidden;
     overflow-y: auto;
+    cursor: none;
+  }
+
+  input, textarea, select {
+    cursor: text !important;
   }
   
   /* Disable backdrop-blur on mobile for performance */
@@ -181,6 +187,10 @@
     * {
       backdrop-filter: none !important;
       -webkit-backdrop-filter: none !important;
+      cursor: auto !important;
+    }
+    input, textarea, select {
+      cursor: text !important;
     }
   }
 
