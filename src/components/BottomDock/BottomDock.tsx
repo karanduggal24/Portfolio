@@ -4,6 +4,7 @@ import { FaLinkedin } from "react-icons/fa";
 import { FaFileDownload } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import Resume from "/src/assets/KaranDuggal-FullStack-Resume.pdf";
+import { track } from "@vercel/analytics";
 function BottomDock() {
   return (
     <div className="fixed bottom-4 left-0 right-0 z-50 flex justify-center px-2 pointer-events-none">
@@ -33,7 +34,10 @@ function BottomDock() {
           </a>
 
           {/* Resume Download */}
-          <a href={Resume} download>
+          <a href={Resume} download
+          onClick={() => track('Resume Downloaded')}
+          >
+
             <DockIcon className="hover:scale-110 transition-transform duration-200 cursor-none text-secondary dark:text-secondary">
               <FaFileDownload className="text-lg sm:text-xl" />
             </DockIcon>
