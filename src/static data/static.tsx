@@ -12,7 +12,7 @@ import { RiTailwindCssFill } from "react-icons/ri";
 import { SiFastapi } from "react-icons/si";
 import { SiNextdotjs } from "react-icons/si";
 import { BiLogoPostgresql } from "react-icons/bi";
-
+import { TbBrandDjango } from "react-icons/tb";
 interface AboutItem {
   id: number;
   type: "education" | "experience";
@@ -139,9 +139,9 @@ export const skills2: Skill[] = [
     img: SiJavascript,
   },
   {
-    name: "Next.js",
+    name: "Django",
     id: 6,
-    img: SiNextdotjs,
+    img: TbBrandDjango,
   },
   
 ];
