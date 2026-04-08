@@ -3,6 +3,7 @@ import { motion } from "motion/react";
 import { projects } from "@/static data/static";
 import { Safari } from "../ui/safari";
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
+import { MatrixRain } from "../Home/Animation";
 
 const containerVariants = {
   hidden: {},
@@ -31,7 +32,7 @@ function Projects() {
 
   return (
     <section className="relative w-full px-4 sm:px-8 md:px-12 lg:px-24 py-16 sm:py-24">
-
+      <MatrixRain />
       {/* Ambient blobs - desktop only */}
       <div className="pointer-events-none hidden sm:block absolute -top-40 -left-40 w-[400px] h-[400px] rounded-full bg-secondary/5 dark:bg-secondary/8 blur-[120px] -z-10" />
       <div className="pointer-events-none hidden sm:block absolute -bottom-40 -right-40 w-[400px] h-[400px] rounded-full bg-secondary/5 dark:bg-secondary/8 blur-[120px] -z-10" />
