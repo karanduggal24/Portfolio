@@ -99,7 +99,7 @@ export const projects: Project[] = [
     ],
     id: 2,
     img: Clothing,
-    url: "https://react-clothing.vercel.app/",
+    url: "https://clothing-store-kd.vercel.app/",
     Frontend: "React",
     Backend: " Python (FastAPI)",
     DataBase: "MySQL",
