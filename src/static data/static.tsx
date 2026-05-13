@@ -52,15 +52,25 @@ export const aboutData: AboutItem[] = [
   {
     id: 1,
     type: "experience",
-    title: "Full-Stack Developer",
+    title: "Associate Software Developer",
     place: "Brainspack, Yamunanagar",
     duration: "July 2025 - Present",
-    mode: "Internship",
+    mode: "Full-time",
     icon: "Briefcase",
     gradient: "from-secondary/10 to-secondary/20",
   },
   {
     id: 2,
+    type: "experience",
+    title: "Associate Software Developer Intern",
+    place: "Brainspack, Yamunanagar",
+    duration: "Jan 2025 - July 2025",
+    mode: "Internship",
+    icon: "Briefcase",
+    gradient: "from-secondary/10 to-secondary/20",
+  },
+  {
+    id: 3,
     type: "education",
     title: "Bachelor of Computer Applications",
     place: "D.A.V. College, Amritsar",
@@ -68,6 +78,7 @@ export const aboutData: AboutItem[] = [
     icon: "GraduationCap",
     gradient: "from-secondary/20 to-secondary/10",
   },
+  
 ];
 
 // interface Skills extends Array<Skills>{}

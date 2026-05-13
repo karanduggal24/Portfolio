@@ -49,7 +49,7 @@ function Home() {
 
           {scrollProgress < 0.3 && (
             <div className="text-sm sm:text-base md:text-lg lg:text-xl mt-6 text-secondary dark:text-secondary leading-relaxed transition-colors duration-700 w-full">
-              <div className="font-semibold mb-6 text-base sm:text-lg md:text-xl lg:text-2xl">Full-Stack Developer</div>
+              <div className="font-semibold mb-6 text-base sm:text-lg md:text-xl lg:text-2xl">Associate Software Developer</div>
               
               {/* Contact Info - Clean Design - Centered */}
               <div className="flex flex-col gap-3 w-full items-center">
